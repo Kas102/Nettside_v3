@@ -12,9 +12,9 @@
     <a href="#booking" class="btn1">Bestill time</a>  <!--Lager en lenke til booking-seksjonen av nettsiden-->
   </div>
 
-  <!--Lager et overlay over bildet for å kunne vise kontaktinformasjonen-->
-  <div class="hero-overlay">  <!--Lager en div med klasse hero-overlay-->
-    <div class="overlay-item">  <!--Lager en div med klasse overlay-item-->
+  <!--Lager et overlay over bildet for å kunne vise kontakt -->
+  <div class="hero-overlay">
+    <div class="overlay-item">
       <h4><i class="fa fa-phone"></i> Kontakt</h4>
       <p>Telefon: 123 45 678</p>
       <p>E-post: kontakt@naprapat.no</p>
@@ -42,7 +42,7 @@
 </section>
 
 <section class="naprapati">
-    <h2 class="section-title1">Hva er Naprapati?</h2>
+    <h2 class="section-title">Hva er Naprapati?</h2>
     <p class="section-description">Naprapati er en manuell behandlingsform som fokuserer på å diagnostisere og behandle muskel- og leddplager. Behandlingen kombinerer teknikker som massasje, tøyning, mobilisering og manipulasjon for å lindre smerte, forbedre bevegelighet og fremme kroppens naturlige helingsprosess.</p>
 </section>
 
@@ -59,6 +59,80 @@
         <br>
         <button onclick="openMaps()">Se i Google Maps</button>
 </section>
+
+<section class="ukeplan">
+
+  <div class="navigation">
+    <button id="prevWeek">Forrige uke</button>
+    <h2 id="weekTitle">Uke</h2>
+    <button id="nextWeek">Neste uke</button>
+  </div>
+
+  <table class="ukeplan-table">
+
+    <tr class ="ukeplan-header">
+      <th></th>
+      <th><p class="ukeplan-dager">Mandag</p></th>
+      <th><p class="ukeplan-dager">Tirsdag</p></th>
+      <th><p class="ukeplan-dager">Onsdag</p></th>
+      <th><p class="ukeplan-dager">Torsdag</p></th>
+      <th><p class="ukeplan-dager">Fredag</p></th>
+    </tr>
+
+    <tr>
+      <td>08:00</td>
+      <td class="slot" data-time="08:00"></td>
+      <td class="slot" data-time="08:00"></td>
+      <td class="slot" data-time="08:00"></td>
+      <td class="slot" data-time="08:00"></td>
+      <td class="slot" data-time="08:00"></td>
+    </tr>
+    <tr>
+      <td>08:30</td>
+      <td class="slot" data-time="08:30"></td>
+      <td class="slot" data-time="08:30"></td>
+      <td class="slot" data-time="08:30"></td>
+      <td class="slot" data-time="08:30"></td>
+      <td class="slot" data-time="08:30"></td>
+    </tr>
+
+    <tr>
+      <td>09:00</td>
+      <td class="slot" data-time="09:00"></td>
+      <td class="slot" data-time="09:00"></td>
+      <td class="slot" data-time="09:00"></td>
+      <td class="slot" data-time="09:00"></td>
+      <td class="slot" data-time="09:00"></td>
+    </tr>
+
+    <tr>
+      <td>09:30</td>
+      <td class="slot" data-time="09:30"></td>
+      <td class="slot" data-time="09:30"></td>
+      <td class="slot" data-time="09:30"></td>
+      <td class="slot" data-time="09:30"></td>
+      <td class="slot" data-time="09:30"></td>
+    </tr>
+    <tr>
+      <td>10:00</td>
+      <td class="slot" data-time="10:00"></td>
+      <td class="slot" data-time="10:00"></td>
+      <td class="slot" data-time="10:00"></td>
+      <td class="slot" data-time="10:00"></td>
+      <td class="slot" data-time="10:00"></td>
+    </tr>
+    <tr>
+      <td>10:30</td>
+      <td class="slot" data-time="10:30"></td>
+      <td class="slot" data-time="10:30"></td>
+      <td class="slot" data-time="10:30"></td>
+      <td class="slot" data-time="10:30"></td>
+      <td class="slot" data-time="10:30"></td>
+    </tr>
+  </table>
+</section>
+
+
 
 <section id="booking" class="booking">
     <h2 class="section-title1">Bestill Time</h2>
@@ -89,13 +163,14 @@
 
   <input 
     type="date"
+    id="dateInput"
     name="bestillingsdato"
-    type="date"
     required
   >
 
   <input 
     type="time"
+    id="timeInput"
     name="bestillingstid"
     autocomplete="off"
     required
@@ -111,6 +186,5 @@
     </form>
 </section>
        
-<script src="/js/app.js"></script>
-
+<script src="/javascript/app.js"></script>
 <%- include('partials/footer') %> <!-- Inkluderer footer-partialen (uten escaping) -->

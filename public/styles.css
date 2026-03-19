@@ -12,11 +12,10 @@
   text-align: center;
 }
 .hero-text1 {
-  background: rgba(53, 128, 240, 0.6); /* blålig halvtransparent */
-  padding: 30px 50px;
+  background: rgba(53, 128, 240, 0.6); 
   border-radius: 12px;
   backdrop-filter: blur(6px); /* gjør bildet bak litt blurry */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* gir depth */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
   color: rgb(255, 255, 255);
   max-width: 500px; /* begrenser bredden */
   text-align: center;   /* sentrer teksten */
@@ -184,10 +183,10 @@ footer {
   padding: 25px 35px;
   border-radius: 15px;
   color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* legger dybde/“hevet” effekt */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
   z-index: 10; /* ligger over hero-innholdet */
   font-weight: 500;
-  backdrop-filter: blur(5px); /* gjør bakgrunnen litt blurry for mer moderne look */
+  backdrop-filter: blur(5px); 
 }
 
 /* Hvert element inni overlay */
@@ -249,4 +248,26 @@ footer {
 }
 .review{
     background-color: white;
+}
+.ukeplan{
+    color: blue;
+}
+.ukeplan-table{
+    display: flex;
+    justify-content: center;
+    
+}
+td, th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.section-title2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: rgb(53, 128, 240);
+}
+.ukeplan-dager {
+    font-weight: 600;
+    color: rgb(53, 128, 240);
 }
