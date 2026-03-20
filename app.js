@@ -34,7 +34,7 @@ db.serialize(() => {
       pasient_id INTEGER,
       behandling_id INTEGER,
       bestillingsdato TEXT,
-      bestillingstid TEXT,
+      bestillingstid TEXT UNIQUE,
       kommentar TEXT,
       FOREIGN KEY (pasient_id) REFERENCES pasienter(pasient_id),
       FOREIGN KEY (behandling_id) REFERENCES behandling(behandling_id)
@@ -59,6 +59,15 @@ function dbRun(sql, params = []) {
     });
   });
 }
+//Henter alle timebestillinger  
+app.get("/api/timebestillinger", (req, res) => {
+  db.all("SELECT * FROM timebestillinger", [], (err, rows) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    res.json(rows);
+  });
+});
 
 // GET / - vis skjema
 app.get('/', (req, res) => {
@@ -66,6 +75,14 @@ app.get('/', (req, res) => {
     title: "Naprapatklinikk",
     message: null
   });
+});
+
+app.get('/login', (req, res) => {
+  res.render('login'); // login.ejs i views-mappen
+});
+
+app.get('/register', (req, res) => {
+  res.render('register'); // register.ejs i views-mappen
 });
 
 // POST /bestill-time - lagre bestilling

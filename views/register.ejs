@@ -1,0 +1,25 @@
+<%- include('partials/header') %> 
+
+<h2 class="login-header">Registrer deg</h2>
+
+<form class="registrer-form">
+    <label class="registrer-label" for="username">Brukernavn:</label>
+    <input class="registrer-input" type="text" id="username" name="username" required>
+
+    <label class="registrer-label" for="email">E-post:</label>
+    <input class="registrer-input" type="email" id="email" name="email" required>
+
+    <label class="registrer-label" for="telefonnummer">Telefonnummer:</label>
+    <input class="registrer-input" type="tel" id="telefonnummer" name="telefonnummer" required>
+
+    <label class="registrer-label" for="password">Passord:</label>
+    <input class="registrer-input" type="password" id="password" name="password" required>
+
+    <button class="registrer-button" type="submit">Registrer</button>
+
+    <p class="newUser">Har du allerede en konto? <a href="/login">Logg inn</a></p>
+</form>
+
+
+
+<%- include('partials/footer') %>

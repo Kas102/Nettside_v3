@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+<section class="login-section">
+<h2 class="login-header">Logg inn</h2>
+<form class="logg-inn-skjema">
+    <label class="login-label" for="username">Brukernavn:</label>
+    <input class="login-input" type="text" id="username" name="username" required>
+
+    <label class="login-label" for="password">Passord:</label>
+    <input class="login-input" type="password" id="password" name="password" required>
+
+    <button class="login-button" >Logg inn</button>
+
+    <p class="newUser">Har du ikke konto? <a href="/register">Registrer deg</a></p>
+</form>
+</section>
+<%- include('partials/footer') %>

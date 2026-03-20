@@ -18,6 +18,30 @@ function formatDate(date) {
   return `${d}-${m}-${y}`;
 }
 
+// --- Hent bookinger fra backend ---
+async function hentBestillinger() {
+  try {
+    const res = await fetch("/api/timebestillinger");
+    const data = await res.json();
+
+    data.forEach(b => {
+      const dato = b.bestillingsdato; // YYYY-MM-DD
+      const tid = b.bestillingstid;   // HH:MM
+
+      const cell = document.querySelector(
+        `.slot[data-date="${dato}"][data-time="${tid}"]`
+      );
+
+      if (cell) {
+        cell.classList.add("booked");
+        cell.innerText = "Opptatt";
+      }
+    });
+  } catch (err) {
+    console.error("Feil ved henting av bookinger:", err);
+  }
+}
+
 // --- Oppdater ukeplan ---
 function oppdaterUkeplan() {
   const startMandag = getMonday(valgtUkeDato);
@@ -36,28 +60,41 @@ function oppdaterUkeplan() {
     // Oppdater slots
     document.querySelectorAll(`.ukeplan-table tr td:nth-child(${i + 1})`).forEach(cell => {
       if (cell.classList.contains("slot")) {
-        cell.setAttribute("data-date", dato.toISOString().split("T")[0]);
+        const isoDato = dato.toISOString().split("T")[0];
+        cell.setAttribute("data-date", isoDato);
+
+        // reset visning før vi legger på nye bookinger
+        cell.classList.remove("booked", "valgt");
+        cell.innerText = "";
       }
     });
   }
+
+  // 👉 hent bookinger etter at planen er oppdatert
+  hentBestillinger();
 }
 
 // --- Klikk på time ---
-document.querySelectorAll(".slot").forEach(slot => {
-  slot.addEventListener("click", function () {
+function leggTilKlikkEvents() {
+  document.querySelectorAll(".slot").forEach(slot => {
+    slot.addEventListener("click", function () {
 
-    const valgtTid = this.getAttribute("data-time");
-    const valgtDato = this.getAttribute("data-date");
+      // ikke la bruker velge opptatt time
+      if (this.classList.contains("booked")) return;
 
-    document.getElementById("timeInput").value = valgtTid;
-    document.getElementById("dateInput").value = valgtDato;
+      const valgtTid = this.getAttribute("data-time");
+      const valgtDato = this.getAttribute("data-date");
 
-    document.querySelectorAll(".slot").forEach(s => s.classList.remove("valgt"));
-    this.classList.add("valgt");
+      document.getElementById("timeInput").value = valgtTid;
+      document.getElementById("dateInput").value = valgtDato;
 
-    document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+      document.querySelectorAll(".slot").forEach(s => s.classList.remove("valgt"));
+      this.classList.add("valgt");
+
+      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+    });
   });
-});
+}
 
 // --- KNAPPER: neste / forrige uke ---
 document.getElementById("nextWeek").addEventListener("click", () => {
@@ -89,4 +126,5 @@ window.addEventListener("DOMContentLoaded", () => {
   valgtUkeDato = new Date(dato);
 
   oppdaterUkeplan();
+  leggTilKlikkEvents();
 });
