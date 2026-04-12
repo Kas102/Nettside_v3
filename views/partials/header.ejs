@@ -10,31 +10,50 @@
 </head>
 <body>
 
-<nav>                                       <!--Lager en nav-element-->
-    <h1>Naprapat Klinikk</h1>               <!--Lager et h1 element som skal være overskrivten på nettsiden-->
-    <div class="navigasjon">
-         <a href="/index">Hjem</a>  
-        <div class="dropdown">
-            <a>Om oss</a>
-            <div class="dropdown-content">
-                <a href="/bestilling">Bestill time</a>
-                <a href="#location">Lokasjon</a>
-            </div>
-        </div>     
-<% if (user && user.userId) { %>
+<nav>
+  <div class="nav-left">
+    <h1>Naprapat klinikk</h1>
+  </div>
 
-  <% if (user.rolle === 'admin') { %>
-    <a href="/admin-timer">Mine timer</a>
-  <% } else { %>
-    <a href="/timer">Mine timer</a>
-  <% } %>
+  <div class="nav-right">
 
-  <a class="logout-btn" href="/logout">Logg ut</a>
+    <a href="/index">Hjem</a>
 
-<% } else { %>
+    <div class="dropdown">
+      <a>Om oss</a>
+      <div class="dropdown-content">
+        <a href="/bestilling">Bestill time</a>
+        <a href="#location">Lokasjon</a>
+      </div>
+    </div>
 
-  <a href="/login">Logg inn</a>
+    <% if (user && user.userId) { %>
 
-<% } %>
+      <div class="profile-wrapper">
+        <div class="profile-circle">
+          <%= user.navn ? user.navn.charAt(0).toUpperCase() : "U" %>
+        </div>
+
+        <div class="profile-dropdown">
+
+          <% if (user.rolle === 'admin') { %>
+            <a href="/admin-timer">Mine timer</a>
+          <% } else { %>
+            <a href="/timer">Mine timer</a>
+          <% } %>
+
+          <form action="/slett-bruker" method="POST">
+            <button type="submit" class="slett-btn">Slett bruker</button>
+          </form>
+
+          <a href="/logout" class="logout-link">Logg ut</a>
+        </div>
+      </div>
+
+    <% } else { %>
+      <a href="/login">Logg inn</a>
+    <% } %>
+
+  </div>
+</nav>
     
-</nav>                                      <!--Lukker nav-elementet-->

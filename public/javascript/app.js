@@ -23,7 +23,7 @@ async function hentBestillinger(startDate, sluttDate) {
     console.log("DATA FRA BACKEND:", data); // DEBUG
 
     data.forEach(b => {
-      // 🔥 Sørger for riktig format
+      //  Sørger for riktig format
       const riktigDato = new Date(b.dato).toISOString().split("T")[0];
       const riktigTid = b.start_tid.padStart(5, "0");
 

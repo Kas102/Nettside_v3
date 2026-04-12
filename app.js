@@ -58,19 +58,6 @@ db.serialize(() => {
     )
   `);
 
-  db.run(`
-    CREATE TABLE IF NOT EXISTS Timehistorikk (
-      historikk_id INTEGER PRIMARY KEY AUTOINCREMENT,
-      time_id INTEGER NOT NULL,
-      bruker_id INTEGER,
-      handling TEXT NOT NULL,
-      tidspunkt TEXT NOT NULL,
-
-      FOREIGN KEY (time_id) REFERENCES Time(time_id),
-      FOREIGN KEY (bruker_id) REFERENCES Bruker(bruker_id)
-    )
-  `);
-
 });
 // Promise helper
 function dbRun(sql, params = []) {
@@ -159,7 +146,41 @@ app.post('/admin-avlys', isLoggedIn, isAdmin, (req, res) => {
 app.get('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'));
 });
+// SLETT BRUKER
+app.post('/slett-bruker', isLoggedIn, async (req, res) => {
+  const bruker_id = req.session.userId;
 
+  try {
+    // 1. Sjekk om brukeren har noen timer
+    const timer = await new Promise((resolve, reject) => {
+      db.all(
+        `SELECT * FROM Time WHERE bruker_id = ?`,
+        [bruker_id],
+        (err, rows) => {
+          if (err) return reject(err);
+          resolve(rows);
+        }
+      );
+    });
+
+    // 2. Hvis brukeren har timer → IKKE lov å slette
+    if (timer.length > 0) {
+      return res.send("Du kan ikke slette brukeren din før alle timer er avlyst");
+    }
+
+    // 3. Slett bruker
+    await dbRun(`DELETE FROM Bruker WHERE bruker_id = ?`, [bruker_id]);
+
+    // 4. Logg ut
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.send("Feil ved sletting av bruker");
+  }
+});
 // VIS INDEX + TIMER
 app.get('/', (req, res) => {
   const sql = `
@@ -209,11 +230,11 @@ app.get('/timer', isLoggedIn, (req, res) => {
   const bruker_id = req.session.userId;
 
   const sql = `
-    SELECT dato, start_tid, slutt_tid, status, kommentar
-    FROM Time
-    WHERE bruker_id = ?
-    ORDER BY dato, start_tid
-  `;
+  SELECT time_id, dato, start_tid, slutt_tid, status, kommentar
+  FROM Time
+  WHERE bruker_id = ?
+  ORDER BY dato, start_tid
+`;
 
   db.all(sql, [bruker_id], (err, rows) => {
     if (err) {
@@ -279,7 +300,14 @@ app.post('/bestill-time', isLoggedIn, async (req, res) => {
     res.send("Feil ved bestilling");
   }
 });
-//Timegenerator
+function formatDato(dato) {
+  const year = dato.getFullYear();
+  const month = String(dato.getMonth() + 1).padStart(2, '0');
+  const day = String(dato.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+// Lager timer for én dag
 function lagTimerForDag(dato, start, slutt, intervallMinutter) {
   let current = new Date(`${dato}T${start}`);
   let end = new Date(`${dato}T${slutt}`);
@@ -287,8 +315,8 @@ function lagTimerForDag(dato, start, slutt, intervallMinutter) {
   while (current < end) {
     let neste = new Date(current.getTime() + intervallMinutter * 60000);
 
-    const startTid = current.toTimeString().slice(0,5);
-    const sluttTid = neste.toTimeString().slice(0,5);
+    const startTid = current.toTimeString().slice(0, 5);
+    const sluttTid = neste.toTimeString().slice(0, 5);
 
     db.run(`
       INSERT OR IGNORE INTO Time (start_tid, slutt_tid, dato)
@@ -298,23 +326,27 @@ function lagTimerForDag(dato, start, slutt, intervallMinutter) {
     current = neste;
   }
 }
+
+// Lager timer én måned frem fra i dag
 function lagTimerEnMaanedFrem() {
-  let start = new Date();
-  let slutt = new Date();
-  slutt.setMonth(slutt.getMonth() + 1);
+  let idag = new Date();
+  let sluttDato = new Date();
+  sluttDato.setMonth(sluttDato.getMonth() + 1);
 
-  while (start < slutt) {
-    let dag = start.getDay();
+  let current = new Date(idag);
 
-    // 0 = søndag, 6 = lørdag
+  while (current < sluttDato) {
+    let dag = current.getDay();
+
+    // Hopper over helg (0 = søndag, 6 = lørdag)
     if (dag !== 0 && dag !== 6) {
+      let datoStr = formatDato(current);
 
-      let datoStr = start.toISOString().split('T')[0];
-
+      // 09:00 til 16:00
       lagTimerForDag(datoStr, '09:00', '16:00', 60);
     }
 
-    start.setDate(start.getDate() + 1);
+    current.setDate(current.getDate() + 1);
   }
 }
 
@@ -354,14 +386,28 @@ app.get('/api/timebestillinger', (req, res) => {
     res.json(rows); // sender json til frontend
   });
 });
+app.post('/ombook-time', isLoggedIn, (req, res) => {
+  const { time_id } = req.body;
+
+  // lagrer hvilken time som skal ombookes
+  req.session.ombook_time_id = time_id;
+
+  // sender bruker til bestillingsside
+  res.redirect('/bestilling');
+});
 // statisk
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SIDER
+app.get('/profil',(req, res) => res.render('profil'));
 app.get('/login', (req, res) => res.render('login'));
 app.get('/register', (req, res) => res.render('register'));
 app.get('/index', (req, res) => res.render('index'));
-app.get('/bestilling', (req, res) => res.render('bestilling'));
+app.get('/bestilling', (req, res) => {
+  res.render('bestilling', {
+    ombook: req.session.ombook_time_id || null
+  });
+});
 //kjører funksjon
 lagTimerEnMaanedFrem();
 // START

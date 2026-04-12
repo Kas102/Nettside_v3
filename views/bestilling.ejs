@@ -1,5 +1,7 @@
 <%-include('partials/header') %>
-  <h2 class="section-title1">Bestill Time</h2>
+  <h2 class="section-title3">
+  <%= ombook ? "Ombook Time" : "Bestill Time" %>
+</h2>
   <div class="toggle-container">
   <button id="toggleUkeplan" class="toggle-btn">
     Vis ledige timer
@@ -29,10 +31,10 @@
   <form action="/bestill-time" method="POST">
 
     <input type="date" id="dateInput" name="bestillingsdato" required>
-    <input type="time" id="timeInput" name="bestillingstid" step="1800" autocomplete="off" required>
+    <input type="time" id="timeInput" name="bestillingstid" step="3600" autocomplete="off" required>
 
     <textarea name="kommentar" placeholder="Hva trenger du hjelp med?" autocomplete="off"></textarea>
-    <button type="submit">Bestill time</button>
+    <button type="submit"><%= ombook ? "Ombook Time" : "Bestill Time" %></button>
   </form>
 </section>
 

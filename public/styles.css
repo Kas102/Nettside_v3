@@ -242,8 +242,12 @@ footer {
     max-width: 600px;
 }
 .navigation {
-    display: flex;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto; /* sentrer hele boksen */
 }
 .change-week {
     padding: 10px 20px;
@@ -334,16 +338,23 @@ footer {
 .dropdown {
     position: relative;
     display: inline-block;
-}   
+}
+
+/* SELVE DROPDOWNEN */
 .dropdown-content {
     display: none;
     position: absolute;
+
+    top: 100%;        /* rett under "Om oss" */
+    left: 50%;        /* midtpunkt */
+    transform: translateX(-40%); /* sentrerer perfekt */
+
     background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
-    text-align: center;
-}
+    text-align: center;}
+
 .dropdown-content a {
     color: black;
     padding: 12px;
@@ -665,10 +676,177 @@ footer {
     width: 100%;   /*Gjør at banneret strekker seg over hele bredden*/
 }
 
-.section-title2 {
+.section-title2, .section-title3 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 28px;
   padding-top: 20px;
   color: rgb(53, 128, 240);
+}
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Sirkelen */
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2c7be5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Dropdown - Sentrert under sirkel */
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Vis ved hover */
+.profile-wrapper:hover .profile-dropdown {
+  display: block;
+}
+.logout-link {
+  display: block;
+  text-align: center;
+  margin: 10px;
+  padding: 8px 12px;
+  background: #2c7be5;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.logout-link:hover {
+  background: #1f5fd1;
+}
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px; /* 👈 viktig: gjør hover-området større */
+}
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 45px; /* litt nærmere sirkelen */
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slett-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(255, 35, 35);
+  padding: 8px 12px;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  width: 100%;
+}  
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgb(53, 128, 240);
+    color: white;
+    bottom: 0;       /* plasserer den nederst */
+    width: 100%;     /* strekker seg over hele bredden */
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* venstre side */
+.nav-left h1 {
+  color: rgb(53, 128, 240);
+  font-size: 22px;
+}
+
+/* høyre side */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+.profile-dropdown {
+  text-align: center;   /* 👈 dette er hovedfixen */
+}
+/* Hele siden sentreres */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+/* Tittel */
+.section-title2 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 28px;
+}
+
+/* Container som sentrerer boksen */
+.profil-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+/* Selve boksen */
+.profil-info {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* NAVN skal være størst og øverst */
+.profil-info .navn {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Informasjon under */
+.profil-info p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #444;
+}
+
+/* labels (Navn:, E-post osv) litt mørkere */
+.profil-info strong {
+  color: #111;
 }
