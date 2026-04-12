@@ -12,10 +12,29 @@
 
 <nav>                                       <!--Lager en nav-element-->
     <h1>Naprapat Klinikk</h1>               <!--Lager et h1 element som skal være overskrivten på nettsiden-->
-    <div class="navigasjon">                <!--lager en div med klasse navigasjon-->
-        <a href="#booking">Bestill time</a> <!--lager en lenke til booking seksjonen av nettsiden min-->
-        <a href="#location">Lokasjon</a>    <!--lager en lenke til lokasjon seksjonen av nettsiden min-->
-        <a href="#kontakt">Kontakt</a>    <!--lager en lenke til kontakt seksjonen av nettsiden min-->
-        <a href="/login">Logg inn</a>    <!--lager en lenke til login siden min-->
-    </div>                                  <!--Lukker div-elementet-->
+    <div class="navigasjon">
+         <a href="/index">Hjem</a>  
+        <div class="dropdown">
+            <a>Om oss</a>
+            <div class="dropdown-content">
+                <a href="/bestilling">Bestill time</a>
+                <a href="#location">Lokasjon</a>
+            </div>
+        </div>     
+<% if (user && user.userId) { %>
+
+  <% if (user.rolle === 'admin') { %>
+    <a href="/admin-timer">Mine timer</a>
+  <% } else { %>
+    <a href="/timer">Mine timer</a>
+  <% } %>
+
+  <a class="logout-btn" href="/logout">Logg ut</a>
+
+<% } else { %>
+
+  <a href="/login">Logg inn</a>
+
+<% } %>
+    
 </nav>                                      <!--Lukker nav-elementet-->

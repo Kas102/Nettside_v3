@@ -1,0 +1,40 @@
+<%-include('partials/header') %>
+  <h2 class="section-title1">Bestill Time</h2>
+  <div class="toggle-container">
+  <button id="toggleUkeplan" class="toggle-btn">
+    Vis ledige timer
+  </button>
+</div>
+<section class="ukeplan" id="ukeplan" style="display: none;">
+
+  <div class="navigation">
+    <button class="change-week" id="prevWeek"><i class="fa fa-arrow-left"></i> Forige uke</button>
+    <button class="change-week" id="nextWeek">Neste uke <i class="fa fa-arrow-right"></i></button>
+  </div>
+
+  <table class="ukeplan-table">
+
+    <tr class ="ukeplan-header">
+      <th></th>
+      <th><p class="ukeplan-dager">Mandag</p></th>
+      <th><p class="ukeplan-dager">Tirsdag</p></th>
+      <th><p class="ukeplan-dager">Onsdag</p></th>
+      <th><p class="ukeplan-dager">Torsdag</p></th>
+      <th><p class="ukeplan-dager">Fredag</p></th>  
+    </tr>
+  </table>
+</section>
+ 
+<section id="booking" class="booking">
+  <form action="/bestill-time" method="POST">
+
+    <input type="date" id="dateInput" name="bestillingsdato" required>
+    <input type="time" id="timeInput" name="bestillingstid" step="1800" autocomplete="off" required>
+
+    <textarea name="kommentar" placeholder="Hva trenger du hjelp med?" autocomplete="off"></textarea>
+    <button type="submit">Bestill time</button>
+  </form>
+</section>
+
+<script src="/javascript/app.js"></script>
+<%-include('partials/footer') %>

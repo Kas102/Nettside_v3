@@ -1,4 +1,4 @@
-    .hero1 {
+.hero1 {
   position: relative;
   width: 100%;
   height: 100vh; /* 100% av viewport-høyden */
@@ -105,7 +105,7 @@ section {
     text-align: center;
     margin-bottom: 40px;
     font-size: 28px;
-    color: rgb(53, 128, 240);
+    color: rgb(255, 255, 255);
 }
 .section-title1 {
     text-align: center;
@@ -241,40 +241,9 @@ footer {
     color:rgb(255, 255, 255);
     max-width: 600px;
 }
-.review-text {
-    text-align: center;
-    margin-bottom: 40px;
-    color:rgb(53, 128, 240);
-}
-.review{
-    background-color: white;
-}
-.ukeplan{
-    color: rgb(53, 128, 240);
-}
-.ukeplan-table{
-    display: flex;
-    justify-content: center;
-    
-}
-td, th {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-.section-title2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: rgb(53, 128, 240);
-}
-.ukeplan-dager {
-    font-weight: 600;
-    color: rgb(53, 128, 240);
-}
 .navigation {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 .change-week {
     padding: 10px 20px;
@@ -319,6 +288,8 @@ td, th {
     border: 1px solid #ccc;
 }
 .login-header {
+    padding-top: 20px;
+    font-size: 28px;
     text-align: center;
     margin-bottom: 50px;
     color: rgb(53, 128, 240);
@@ -359,4 +330,345 @@ td, th {
     color: white;
     border-radius: 25px;
     cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}   
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.logout-btn {
+    background: rgb(53, 128, 240);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Wrapper */
+.ukeplan-table {
+  width: 100%;
+  max-width: 900px;
+  margin: 40px auto;
+  border-collapse: separate;
+  border-spacing: 10px; /* gir luft mellom boksene */
+}
+
+/* Header (dagene) */
+.ukeplan-table th {
+  background-color: rgb(53, 128, 240);
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Tid-kolonne */
+.ukeplan-table td:first-child {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 500;
+  border-radius: 8px;
+  width: 80px;
+}
+
+/* Alle celler */
+.ukeplan-table td {
+  height: 60px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #eaeaea;
+  transition: 0.2s ease;
+}
+
+/* Ledig (default) */
+.ukeplan-table td.slot {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+
+/* BOOKED (rød) */
+.ukeplan-table td.booked {
+  background-color: rgb(241, 50, 50);
+  color: white;
+  font-weight: bold;
+  cursor: not-allowed;
+}
+
+/* LEDIG (grønn) */
+.ukeplan-table td.ledig {
+  background-color: #1db954;
+  color: white;
+  font-weight: 600;
+}
+
+/* VALGT */
+.ukeplan-table td.valgt {
+  background-color: rgb(53, 128, 240);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(53,128,240,0.6);
+}
+/* FORTID */
+.ukeplan-table td.past {
+  background-color: rgb(255, 255, 255);
+  color: rgb(155, 155, 155);
+  font-weight: 600;
+  cursor: not-allowed;
+}
+
+.timer-container {
+  max-width: 1000px;
+  margin: 40px auto 0 auto; /* sentrer hele containeren */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center; /* viktig for sentrering */
+  justify-items: center;   /* sentrer kortene */
+}
+.time-card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* DATO ØVERST */
+.time-header h3 {
+  color: rgb(53,128,240);
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* TID + KOMMENTAR */
+.time-body {
+  margin-bottom: 20px;
+}
+
+.time-slot {
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.comment {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* KNAPPER */
+.time-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ORANSJE OBOOK */
+.ombook {
+  background: #ffb347;
+  color: white;
+}
+
+/* RØD AVLYS */
+.avlys {
+  background: #ff5c5c;
+  color: white;
+}
+
+/* LÅST TEKST */
+.locked {
+  color: gray;
+  font-size: 14px;
+}
+@media (max-width: 900px) {
+  .timer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .timer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Container som sentrerer knappen */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+/* Selve knappen */
+.toggle-btn {
+  background: linear-gradient(135deg, #2c7be5, #1f5fbf);
+  color: white;
+  border: none;
+  width: 500px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+
+  /* moderne look */
+  box-shadow: 0 10px 20px rgba(44, 123, 229, 0.25);
+  transition: all 0.25s ease;
+}
+
+/* hover effekt */
+.toggle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(44, 123, 229, 0.35);
+}
+
+/* active (når man klikker) */
+.toggle-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 8px 15px rgba(44, 123, 229, 0.2);
+}
+
+/* fokus (keyboard accessibility) */
+.toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(44, 123, 229, 0.25);
+}
+/* CONTAINER */
+.admin-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* DAG SEKSJON */
+.admin-day {
+  margin-bottom: 40px;
+}
+
+/* DAG HEADER */    
+.admin-day h2 {
+  color: rgb(53, 128, 240);
+  margin-bottom: 15px;
+  border-left: 5px solid rgb(53, 128, 240);
+  padding-left: 10px;
+}
+
+/* GRID PER DAG */
+.admin-day-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* TIME KORT */
+.admin-slot {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: 0.2s;
+}
+
+.admin-slot:hover {
+  transform: translateY(-3px);
+}
+
+/* TID */
+.admin-time {
+  font-weight: bold;
+  color: rgb(53, 128, 240);
+  margin-bottom: 5px;
+}
+
+/* NAVN */
+.admin-user {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* BUTTON */
+.admin-btn {
+  padding: 8px;
+  border: none;
+  background: rgb(241, 50, 50);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 13px;
+}
+
+.admin-btn:hover {
+  background: rgb(200, 30, 30);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .admin-day-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-day-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.admin-user i {
+  margin-right: 6px;
+  color: rgb(53, 128, 240);
+}
+.dine-timer {
+  text-align: center;
+  margin: 40px 0 10px;
+  font-size: 28px;
+  color: rgb(53, 128, 240);
+}
+html, body {
+  height: 100%;
+  margin: 0;
+}
+footer {
+    bottom: 0;  /*Plasserer banneret nederst*/
+    width: 100%;   /*Gjør at banneret strekker seg over hele bredden*/
+}
+
+.section-title2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 28px;
+  padding-top: 20px;
+  color: rgb(53, 128, 240);
 }

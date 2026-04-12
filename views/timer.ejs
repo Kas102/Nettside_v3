@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<h2 class="dine-timer">Mine timer</h2>
+
+<section class="timer-container">
+
+  <% if (timer.length === 0) { %>
+    <p class="ingen-timer">Du har ingen timer bestilt.</p>
+  <% } else { %>
+
+    <% timer.forEach(t => { 
+      const timeDato = new Date(`${t.dato}T${t.start_tid}`);
+      const now = new Date();
+      const diffHours = (timeDato - now) / (1000 * 60 * 60);
+      const kanEndres = diffHours > 24;
+    %>
+
+      <!--  CARD START -->
+      <div class="time-card">
+
+        <div class="time-header">
+          <h3><%= t.dato %></h3>
+        </div>
+
+        <div class="time-body">
+          <p class="time-slot"><%= t.start_tid %> - <%= t.slutt_tid %></p>
+          <p class="comment"><%= t.kommentar ? t.kommentar : "Ingen kommentar" %></p>
+        </div>
+
+        <div class="time-actions">
+          <% if (kanEndres) { %>
+
+            <form method="POST" action="/avlys-time">
+              <input type="hidden" name="dato" value="<%= t.dato %>">
+              <input type="hidden" name="tid" value="<%= t.start_tid %>">
+              <button class="btn avlys">Avlys</button>
+            </form>
+
+           <form method="POST" action="/ombook-time">
+          <input type="hidden" name="time_id" value="<%= t.time_id %>">
+          <button class="btn ombook">Ombook</button>
+          </form>
+
+          <% } else { %>
+            <p class="locked">Kan ikke endres (mindre enn 24t)</p>
+          <% } %>
+        </div>
+
+      </div>
+      
+
+    <% }) %>
+
+  <% } %>
+
+</section>
+
+<%- include('partials/footer') %>

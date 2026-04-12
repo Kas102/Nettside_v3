@@ -9,7 +9,7 @@
   <div class="hero-text1">  <!--Lager en div med klasse hero-text1-->
     <h1>Velkommen</h1> <!--Lager et h1 element-->
     <p>Profesjonell behandling for muskel- og leddplager</p>  <!--Lager et p element-->
-    <a href="#booking" class="btn1">Bestill time</a>  <!--Lager en lenke til booking-seksjonen av nettsiden-->
+    <a href="/bestilling" class="btn1">Bestill time</a>  <!--Lager en lenke til booking-seksjonen av nettsiden-->
   </div>
 
   <!--Lager et overlay over bildet for å kunne vise kontakt -->
@@ -45,146 +45,10 @@
     <h2 class="section-title">Hva er Naprapati?</h2>
     <p class="section-description">Naprapati er en manuell behandlingsform som fokuserer på å diagnostisere og behandle muskel- og leddplager. Behandlingen kombinerer teknikker som massasje, tøyning, mobilisering og manipulasjon for å lindre smerte, forbedre bevegelighet og fremme kroppens naturlige helingsprosess.</p>
 </section>
-
-<section class="review">
-    <h2 class="review-text">Hva synes kundene våre?</h2>
-    <div class="reviews">
-
-    </div>
-</section>
-
 <section id="location" class="location">
     <h2 class="section-title">Vårt lokale</h2>
         <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353" alt="Klinikk" class="lokale-bilde">
         <br>
         <button onclick="openMaps()">Se i Google Maps</button>
 </section>
-
-<section class="ukeplan">
-
-  <div class="navigation">
-    <button class="change-week" id="prevWeek">Forrige uke</button>
-    <h2 id="weekTitle">Uke</h2>
-    <button class="change-week" id="nextWeek">Neste uke</button>
-  </div>
-
-  <table class="ukeplan-table">
-
-    <tr class ="ukeplan-header">
-      <th></th>
-      <th><p class="ukeplan-dager">Mandag</p></th>
-      <th><p class="ukeplan-dager">Tirsdag</p></th>
-      <th><p class="ukeplan-dager">Onsdag</p></th>
-      <th><p class="ukeplan-dager">Torsdag</p></th>
-      <th><p class="ukeplan-dager">Fredag</p></th>  
-    </tr>
-
-    <tr>
-      <td>08:00</td>
-      <td class="slot" data-time="08:00"></td>
-      <td class="slot" data-time="08:00"></td>
-      <td class="slot" data-time="08:00"></td>
-      <td class="slot" data-time="08:00"></td>
-      <td class="slot" data-time="08:00"></td>
-    </tr>
-    <tr>
-      <td>08:30</td>
-      <td class="slot" data-time="08:30"></td>
-      <td class="slot" data-time="08:30"></td>
-      <td class="slot" data-time="08:30"></td>
-      <td class="slot" data-time="08:30"></td>
-      <td class="slot" data-time="08:30"></td>
-    </tr>
-
-    <tr>
-      <td>09:00</td>
-      <td class="slot" data-time="09:00"></td>
-      <td class="slot" data-time="09:00"></td>
-      <td class="slot" data-time="09:00"></td>
-      <td class="slot" data-time="09:00"></td>
-      <td class="slot" data-time="09:00"></td>
-    </tr>
-
-    <tr>
-      <td>09:30</td>
-      <td class="slot" data-time="09:30"></td>
-      <td class="slot" data-time="09:30"></td>
-      <td class="slot" data-time="09:30"></td>
-      <td class="slot" data-time="09:30"></td>
-      <td class="slot" data-time="09:30"></td>
-    </tr>
-    <tr>
-      <td>10:00</td>
-      <td class="slot" data-time="10:00"></td>
-      <td class="slot" data-time="10:00"></td>
-      <td class="slot" data-time="10:00"></td>
-      <td class="slot" data-time="10:00"></td>
-      <td class="slot" data-time="10:00"></td>
-    </tr>
-    <tr>
-      <td>10:30</td>
-      <td class="slot" data-time="10:30"></td>
-      <td class="slot" data-time="10:30"></td>
-      <td class="slot" data-time="10:30"></td>
-      <td class="slot" data-time="10:30"></td>
-      <td class="slot" data-time="10:30"></td>
-    </tr>
-  </table>
-</section>
-
-
-
-<section id="booking" class="booking">
-    <h2 class="section-title1">Bestill Time</h2>
-    <form action="/bestill-time" method="POST">
-  <input 
-    type="text" 
-    name="navn" 
-    placeholder="Navn"
-    autocomplete="off"
-    required
-  >
-
-  <input 
-    type="number" 
-    name="telefonnummer"
-    placeholder="Telefonnummer"
-    autocomplete="off"
-    required
-  >
-
-  <input 
-    type="text" 
-    name="email"
-    placeholder="Epost"
-    autocomplete="off"
-    required
-  >
-
-  <input 
-    type="date"
-    id="dateInput"
-    name="bestillingsdato"
-    required
-  >
-
-  <input 
-    type="time"
-    id="timeInput"
-    name="bestillingstid"
-    autocomplete="off"
-    required
-  >
-
-  <textarea
-    name="kommentar"
-    placeholder="Hva trenger du hjelp med?"
-    autocomplete="off"
-  ></textarea>
-
-  <button type="submit">Bestill time</button>
-    </form>
-</section>
-       
-<script src="/javascript/app.js"></script>
 <%- include('partials/footer') %> <!-- Inkluderer footer-partialen (uten escaping) -->

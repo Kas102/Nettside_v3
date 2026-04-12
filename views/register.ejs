@@ -2,10 +2,11 @@
 
 <h2 class="login-header">Registrer deg</h2>
 
-<form class="registrer-form">
-    <label class="registrer-label" for="username">Brukernavn:</label>
-    <input class="registrer-input" type="text" id="username" name="username" required>
-
+<form class="registrer-form" method="POST" action="/register">
+    
+    <label class="registrer-label" for="navn">Brukernavn:</label>
+    <input class="registrer-input" type="text" id="navn" name="navn" required>
+    
     <label class="registrer-label" for="email">E-post:</label>
     <input class="registrer-input" type="email" id="email" name="email" required>
 
