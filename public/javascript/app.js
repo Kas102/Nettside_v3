@@ -70,10 +70,10 @@ async function oppdaterUkeplan() {
   // finner mandagen i valgt uke
   const startMandag = getMonday(valgtUkeDato);
 
-  // henter alle header-celler (dagene i tabellen)
+  // henter alle header celler som erdagene i tabellen
   const kolonner = document.querySelectorAll(".ukeplan-table tr:first-child th");
 
-  // lager liste over klokkeslett (09:00 til 15:00)
+  // lager liste over klokkeslett 09:00 til 15:00
   const timer = [];
   for(let t=9; t<16; t++) timer.push(`${String(t).padStart(2,'0')}:00`);
 
@@ -101,16 +101,16 @@ async function oppdaterUkeplan() {
     tdTime.innerText = tid;
     tr.appendChild(tdTime);
 
-    // lager 5 dager (mandag–fredag)
+    // lager 5 dager mandag–fredag
     for(let i=1;i<=5;i++){
 
       const dato = new Date(startMandag); // kopi av mandag
       dato.setDate(startMandag.getDate() + (i-1)); // flytter dag
 
       const td = document.createElement("td"); // lager celle
-      td.classList.add("slot"); // markerer som tids-slot
+      td.classList.add("slot"); // markerer som tidsslot
 
-      // lagrer metadata (dato og tid) i HTML-attributter
+      
       td.dataset.time = tid;
       td.dataset.date = formatISODate(dato);
 
@@ -134,7 +134,7 @@ async function oppdaterUkeplan() {
     document.querySelector(".ukeplan-table").appendChild(tr);
   });
 
-  // finner start og sluttdato  (mandag–fredag)
+  // finner start og sluttdato mandag–fredag
   const startISO = formatISODate(startMandag);
   const sluttISO = formatISODate(
     new Date(startMandag.getTime() + 4*24*60*60*1000)
@@ -211,12 +211,12 @@ const ukeplan = document.getElementById("ukeplan");
 // klikker på vis/skjul knapp
 toggleBtn.addEventListener("click", () => {
 
-  // hvis skjult → vis
+  // hvis skjult  vis innhold
   if (ukeplan.style.display === "none" || ukeplan.style.display === "") {
     ukeplan.style.display = "block";
     toggleBtn.textContent = "Skjul ukeplan";
 
-  // hvis synlig → skjul
+  // hvis synlig sjul innhold
   } else {
     ukeplan.style.display = "none";
     toggleBtn.textContent = "Vis ukeplan";
