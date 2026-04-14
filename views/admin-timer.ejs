@@ -1,48 +1,39 @@
 <%- include('partials/header') %>
-
+<style>
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+</style>
 <section class="admin-container">
-
   <h1 class="section-title2">Timeplan</h1>
-
   <% let currentDate = null; %>
-
-  <% timer.forEach((t, index) => { %>
-
+    <% timer.forEach((t, index) => { %>
     <% if (t.dato !== currentDate) { 
          if (currentDate !== null) { %>
-           </div> <!-- lukker forrige grid -->
+           </div> 
          </div>
     <% } %>
-
       <div class="admin-day">
         <h2><%= t.dato %></h2>
         <div class="admin-day-grid">
-
     <% currentDate = t.dato; } %>
-
-    <!-- SLOT -->
     <div class="admin-slot">
       <div class="admin-time">
         <%= t.start_tid %> - <%= t.slutt_tid %>
       </div>
-
       <div class="admin-user">
         <i class="fa fa-user"></i> <%= t.navn || "Ukjent" %>
         </div>
-
       <form method="POST" action="/admin-avlys">
         <input type="hidden" name="time_id" value="<%= t.time_id %>">
         <button class="admin-btn">Avlys</button>
       </form>
     </div>
-
     <% if (index === timer.length - 1) { %>
         </div>
       </div>
     <% } %>
-
   <% }) %>
-
 </section>
-
 <%- include('partials/footer') %>

@@ -1,4 +1,10 @@
 <%- include('partials/header') %>
+<style>
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+</style>
 <section class="login-section">
 <h2 class="login-header">Logg inn</h2>
 <form class="logg-inn-skjema" action="/login" method="POST">
@@ -11,7 +17,6 @@
     <button class="login-button" type="submit">Logg inn</button>
 
     <p class="newUser">Har du ikke konto? <a href="/register">Registrer deg</a></p>
-    <p class="changePassword">Har du glemt passordet ditt? <a href="/change-password">Endre passord</a></p>
 </form>
 </section>
 <%- include('partials/footer') %>

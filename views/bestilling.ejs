@@ -1,4 +1,10 @@
 <%-include('partials/header') %>
+<style>
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+</style>
   <h2 class="section-title3">
   <%= ombook ? "Ombook Time" : "Bestill Time" %>
 </h2>
@@ -13,9 +19,7 @@
     <button class="change-week" id="prevWeek"><i class="fa fa-arrow-left"></i> Forige uke</button>
     <button class="change-week" id="nextWeek">Neste uke <i class="fa fa-arrow-right"></i></button>
   </div>
-
   <table class="ukeplan-table">
-
     <tr class ="ukeplan-header">
       <th></th>
       <th><p class="ukeplan-dager">Mandag</p></th>
@@ -26,17 +30,13 @@
     </tr>
   </table>
 </section>
- 
 <section id="booking" class="booking">
   <form action="/bestill-time" method="POST">
-
     <input type="date" id="dateInput" name="bestillingsdato" required>
     <input type="time" id="timeInput" name="bestillingstid" step="3600" autocomplete="off" required>
-
     <textarea name="kommentar" placeholder="Hva trenger du hjelp med?" autocomplete="off"></textarea>
     <button type="submit"><%= ombook ? "Ombook Time" : "Bestill Time" %></button>
   </form>
 </section>
-
 <script src="/javascript/app.js"></script>
 <%-include('partials/footer') %>

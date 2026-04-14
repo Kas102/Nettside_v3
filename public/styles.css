@@ -1,49 +1,116 @@
+/*--BODY--*/
+* {
+    margin: 0; /*Setter margin til 0 for alle elementer*/
+    padding: 0; /*Setter padding til 0 for alle elementer */
+    box-sizing: border-box; /* Setter box-sizing til border-box */
+    font-family: 'Poppins', sans-serif; /*setter font */
+}
+body {
+    background: #f4f7fb; /* Setter standard bakgrunsfarge */
+    color: #333;  /* Setter tekstfarge */
+    margin: 0; /*Setter margin til 0 */
+}
+html, body {
+  height: 100%; /*setter høyden til 100% */
+  margin: 0; /*setter margin til 0 */
+}
+
+/*--HERO--*/
 .hero1 {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* 100% av viewport-høyden */
-  background-image: url('/bilder/bilde-naprapat.webp'); 
-  background-size: cover;   /* dekker hele området */
-  background-position: center; /* sentrer bildet */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(0, 0, 0);  /* tekstfarge */
-  text-align: center;
+  position: relative; /*Setter posisjonen til relativ */
+  width: 100%; /* setter bredden til 100% */
+  height: 100vh;  /*setter høyden til 100% viewport height*/
+  background-image: url('/bilder/bilde-naprapat.webp'); /*Setter bakgrunnsbilde på hero */
+  background-size: cover;     /*sier at bakgrunnsbilde skal fylle hele boksen */
+  background-position: center;  /* posisjonerer bakgrunnsbildet i midten */
+  display: flex; /*Bruker flexbox for å sentrere innholdet */
+  justify-content: center;  /*Sentrerer innholdet horisontalt */
+  align-items: center;  /*Sentrerer innholdet vertikalt */
+  color: rgb(0, 0, 0);  /*Setter tekstfarge */
+  text-align: center; /*Sentrerer teksten */
 }
 .hero-text1 {
-  background: rgba(53, 128, 240, 0.6); 
-  border-radius: 12px;
-  backdrop-filter: blur(6px); /* gjør bildet bak litt blurry */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
-  color: rgb(255, 255, 255);
-  max-width: 500px; /* begrenser bredden */
-  text-align: center;   /* sentrer teksten */
+  background: rgba(53, 128, 240, 0.6); /*Setter bakgrunnsfarge med gjennomsiktighet */
+  border-radius: 12px; /*Setter border-radius for å få avrundede hjørner */
+  backdrop-filter: blur(6px);  /*Legger til en blur-effekt på bakgrunnen for å forbedre lesbarheten */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);  /*Legger til en skygge for å gi dybde */
+  color: rgb(255, 255, 255);  /*Setter tekstfarge */
+  max-width: 500px;   /*Setter maksimal bredde for teksten */
+  text-align: center; /*Sentrerer teksten */
 }
-
 .hero1 .btn1 {
-  display: inline-block;    /*sier at det skal displayes som en knapp */
-  margin-top: 20px;
-  padding: 12px 24px;
-  background-color: #ffffff;
-  color: rgba(53, 128, 240);
-  text-decoration: none;
-  border-radius: 5px;
-  cursor: pointer;
+  display: inline-block; /*Gjør knappen til en inline-block for å kunne bruke padding og margin */
+  margin-top: 20px; /*legger til margin over knappen */
+  padding: 12px 24px; /*Legger til padding */
+  background-color: #ffffff; /*Setter bakgrunnsfarge */
+  color: rgba(53, 128, 240);  /*Setter tekstfarge */
+  text-decoration: none;  /*Fjerner understrek fra lenken */
+  border-radius: 5px; /*Setter border-radius for å få avrundede hjørner */
+  cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+.hero {
+    display: flex;  /*bruker flexbox */
+    align-items: center;  /*Sentrerer innholdet */
+    justify-content: space-between; /*Plasserer innholdet med mellomrom mellom */
+    padding: 80px 10%;  /*legger til padding */
+    background: white; /*Setter bakgrunnsfarge */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
+}
+.hero-text {
+    max-width: 500px; /*Setter maksimal bredde for teksten */
+}
+.hero img {
+    width: 350px; /*Setter bredden på bildet */
+    border-radius: 20px;  /*Setter border-radius for å få avrundede hjørner */
+}
+.hero button {
+    margin-top: 20px; /*legger til margin */
+    padding: 12px 25px; /*Legger til padding */
+    border: none; /*fjerner standard border */
+    background: white;  /*Setter bakgrunnsfarge */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
+    font-weight: 600; /*Setter fontvekt */
+    border-radius: 30px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
+}
+.hero-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+  background-color: rgba(53, 128, 240, 0.9);
+  padding: 25px 35px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
+  z-index: 10;
+  font-weight: 500;
+  backdrop-filter: blur(5px); 
+}
+.hero-overlay .overlay-item {
+  text-align: center;
+  min-width: 120px;
+}
+.hero-overlay .overlay-item h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.hero-overlay .overlay-item p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+.hero-overlay .overlay-icon {
+  font-size: 20px;
+  margin-right: 8px;
 }
 
-body {
-    background: #f4f7fb;
-    color: #333;
-}
 
-/* NAV */
+/*--NAVBAR--*/
 nav {
     display: flex;
     justify-content: space-between;
@@ -54,49 +121,50 @@ nav {
     top: 0;
     z-index: 1000;
 }
-
 nav h1 {
     color: rgb(53, 128, 240);
 }
-
 nav a {
     text-decoration: none;
     color: #000000;
     margin-left: 20px;
     font-weight: 500;
 }
-
-/* HERO */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 80px 10%;
-    background: white;
-    color: rgb(53, 128, 240);
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto; 
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-left h1 {
+  color: rgb(53, 128, 240);
+  font-size: 22px;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-right a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
 
-.hero-text {
-    max-width: 500px;
-}
-
-.hero img {
-    width: 350px;
-    border-radius: 20px;
-}
-
-.hero button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    border: none;
-    background: white;
-    color: rgb(53, 128, 240);
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-/* SECTIONS */
+/*--SEKSJONER--*/
 section {
     padding: 60px 10%;
 }
@@ -113,18 +181,18 @@ section {
     font-size: 28px;
     color: rgb(255, 255, 255);
 }
-.location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-/* LOCATION */
+
+/*--LOKASJON--*/
 .location img {
     width: 100%;
     max-width: 600px;
     border-radius: 20px;
 }
-
+.location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .location button {
     margin-top: 15px;
     padding: 10px 20px;
@@ -135,7 +203,7 @@ section {
     cursor: pointer;
 }
 
-/* BOOKING */
+/*--BESTILLING--*/
 .booking form {
     display: flex;
     flex-direction: column;
@@ -163,58 +231,33 @@ section {
     align-items: center;
     justify-content: space-between;
     color: black;
-}   
+} 
+.change-week {
+    padding: 10px 20px;
+    border: none;
+    background: rgb(53, 128, 240);
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+} 
+.booked {
+  background-color: rgb(241, 50, 50);
+  color: white;
+  font-weight: bold;
+}  
 
+/*--FOOTER--*/
 footer {
     text-align: center;
     padding: 20px;
     background: rgb(53, 128, 240);
     color: white;
-}
-/* Overlay-laget over hero-bildet */
-.hero-overlay {
-  position: absolute;
-  bottom: 20px; /* litt over bunnen */
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 50px;
-  background-color: rgba(53, 128, 240, 0.9); /* blått tema med litt transparens */
-  padding: 25px 35px;
-  border-radius: 15px;
-  color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
-  z-index: 10; /* ligger over hero-innholdet */
-  font-weight: 500;
-  backdrop-filter: blur(5px); 
+    bottom: 0;  
+    width: 100%;   
 }
 
-/* Hvert element inni overlay */
-.hero-overlay .overlay-item {
-  text-align: center;
-  min-width: 120px;
-}
 
-.hero-overlay .overlay-item h4 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.hero-overlay .overlay-item p {
-  margin: 3px 0;
-  font-size: 14px;
-}
-
-/* Ikoner */
-.hero-overlay .overlay-icon {
-  font-size: 20px;
-  margin-right: 8px;
-}
-
-/* Responsiv overlay */
+/* Responsiv */
 @media (max-width: 768px) {
   .hero-overlay {
     flex-direction: column;
@@ -224,6 +267,30 @@ footer {
     padding: 20px 25px;
   }
 }
+@media (max-width: 900px) {
+  .admin-day-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-day-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .timer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .timer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*--NAPRAPATI--*/
 .naprapati{
     background-color: rgb(53, 128, 240);
     display: flex;
@@ -241,27 +308,13 @@ footer {
     color:rgb(255, 255, 255);
     max-width: 600px;
 }
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto; /* sentrer hele boksen */
+.section-title2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: rgb(53, 128, 240);
 }
-.change-week {
-    padding: 10px 20px;
-    border: none;
-    background: rgb(53, 128, 240);
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-} 
-.booked {
-  background-color: rgb(241, 50, 50);
-  color: white;
-  font-weight: bold;
-}
+
+/*--LOGG INN OG REGISTRER--*/
 .logg-inn-skjema {
     display: flex;
     flex-direction: column;
@@ -335,20 +388,19 @@ footer {
     border-radius: 25px;
     cursor: pointer;
 }
+
+/*-DROPDOWN--*/
 .dropdown {
     position: relative;
     display: inline-block;
 }
-
-/* SELVE DROPDOWNEN */
 .dropdown-content {
     display: none;
     position: absolute;
 
-    top: 100%;        /* rett under "Om oss" */
-    left: 50%;        /* midtpunkt */
-    transform: translateX(-40%); /* sentrerer perfekt */
-
+    top: 100%;        
+    left: 50%;        
+    transform: translateX(-40%);
     background-color: white;
     min-width: 160px;
     box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
@@ -368,6 +420,8 @@ footer {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+
 .logout-btn {
     background: rgb(53, 128, 240);
     color: white;
@@ -376,16 +430,15 @@ footer {
     text-decoration: none;
     font-weight: bold;
 }
-/* Wrapper */
+
+/*--UKEPLAN--*/
 .ukeplan-table {
   width: 100%;
   max-width: 900px;
   margin: 40px auto;
   border-collapse: separate;
-  border-spacing: 10px; /* gir luft mellom boksene */
+  border-spacing: 10px; 
 }
-
-/* Header (dagene) */
 .ukeplan-table th {
   background-color: rgb(53, 128, 240);
   color: white;
@@ -394,8 +447,6 @@ footer {
   font-weight: 600;
   text-align: center;
 }
-
-/* Tid-kolonne */
 .ukeplan-table td:first-child {
   background-color: #f1f1f1;
   color: #333;
@@ -403,8 +454,6 @@ footer {
   border-radius: 8px;
   width: 80px;
 }
-
-/* Alle celler */
 .ukeplan-table td {
   height: 60px;
   text-align: center;
@@ -412,37 +461,27 @@ footer {
   background-color: #eaeaea;
   transition: 0.2s ease;
 }
-
-/* Ledig (default) */
 .ukeplan-table td.slot {
   background-color: #e6e6e6;
   cursor: pointer;
 }
-
-
-/* BOOKED (rød) */
 .ukeplan-table td.booked {
   background-color: rgb(241, 50, 50);
   color: white;
   font-weight: bold;
   cursor: not-allowed;
 }
-
-/* LEDIG (grønn) */
 .ukeplan-table td.ledig {
   background-color: #1db954;
   color: white;
   font-weight: 600;
 }
-
-/* VALGT */
 .ukeplan-table td.valgt {
   background-color: rgb(53, 128, 240);
   color: white;
   font-weight: bold;
   box-shadow: 0 0 10px rgba(53,128,240,0.6);
 }
-/* FORTID */
 .ukeplan-table td.past {
   background-color: rgb(255, 255, 255);
   color: rgb(155, 155, 155);
@@ -450,14 +489,15 @@ footer {
   cursor: not-allowed;
 }
 
+/*--TIME--*/
 .timer-container {
   max-width: 1000px;
-  margin: 40px auto 0 auto; /* sentrer hele containeren */
+  margin: 40px auto 0 auto; 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  justify-content: center; /* viktig for sentrering */
-  justify-items: center;   /* sentrer kortene */
+  justify-content: center; 
+  justify-items: center;  
 }
 .time-card {
   background: white;
@@ -466,37 +506,28 @@ footer {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   text-align: center;
 }
-
-/* DATO ØVERST */
 .time-header h3 {
   color: rgb(53,128,240);
   font-size: 22px;
   margin-bottom: 10px;
 }
-
-/* TID + KOMMENTAR */
 .time-body {
   margin-bottom: 20px;
 }
-
 .time-slot {
   font-size: 18px;
   color: #000;
   margin-bottom: 8px;
 }
-
 .comment {
   font-size: 14px;
   color: #aaa;
 }
-
-/* KNAPPER */
 .time-actions {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-
 .btn {
   padding: 12px 30px;
   border: none;
@@ -504,44 +535,25 @@ footer {
   font-size: 16px;
   cursor: pointer;
 }
-
-/* ORANSJE OBOOK */
 .ombook {
   background: #ffb347;
   color: white;
 }
-
-/* RØD AVLYS */
 .avlys {
   background: #ff5c5c;
   color: white;
 }
-
-/* LÅST TEKST */
 .locked {
   color: gray;
   font-size: 14px;
 }
-@media (max-width: 900px) {
-  .timer-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 600px) {
-  .timer-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Container som sentrerer knappen */
+/*--TOOGLE--*/
 .toggle-container {
   display: flex;
   justify-content: center;
   margin: 30px 0;
 }
-
-/* Selve knappen */
 .toggle-btn {
   background: linear-gradient(135deg, #2c7be5, #1f5fbf);
   color: white;
@@ -553,57 +565,42 @@ footer {
   border-radius: 12px;
   cursor: pointer;
   letter-spacing: 0.5px;
-
-  /* moderne look */
   box-shadow: 0 10px 20px rgba(44, 123, 229, 0.25);
   transition: all 0.25s ease;
 }
-
-/* hover effekt */
 .toggle-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(44, 123, 229, 0.35);
 }
-
-/* active (når man klikker) */
 .toggle-btn:active {
   transform: scale(0.98);
   box-shadow: 0 8px 15px rgba(44, 123, 229, 0.2);
 }
-
-/* fokus (keyboard accessibility) */
 .toggle-btn:focus {
   outline: none;
   box-shadow: 0 0 0 4px rgba(44, 123, 229, 0.25);
 }
-/* CONTAINER */
+
+/*--ADMIN--*/
 .admin-container {
   max-width: 1100px;
   margin: 50px auto;
   padding: 20px;
 }
-
-/* DAG SEKSJON */
 .admin-day {
   margin-bottom: 40px;
-}
-
-/* DAG HEADER */    
+}  
 .admin-day h2 {
   color: rgb(53, 128, 240);
   margin-bottom: 15px;
   border-left: 5px solid rgb(53, 128, 240);
   padding-left: 10px;
 }
-
-/* GRID PER DAG */
 .admin-day-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px;
 }
-
-/* TIME KORT */
 .admin-slot {
   background: white;
   border-radius: 10px;
@@ -611,25 +608,18 @@ footer {
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   transition: 0.2s;
 }
-
 .admin-slot:hover {
   transform: translateY(-3px);
 }
-
-/* TID */
 .admin-time {
   font-weight: bold;
   color: rgb(53, 128, 240);
   margin-bottom: 5px;
 }
-
-/* NAVN */
 .admin-user {
   font-size: 14px;
   margin-bottom: 10px;
 }
-
-/* BUTTON */
 .admin-btn {
   padding: 8px;
   border: none;
@@ -640,42 +630,20 @@ footer {
   width: 100%;
   font-size: 13px;
 }
-
 .admin-btn:hover {
   background: rgb(200, 30, 30);
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .admin-day-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .admin-day-grid {
-    grid-template-columns: 1fr;
-  }
 }
 .admin-user i {
   margin-right: 6px;
   color: rgb(53, 128, 240);
 }
+
 .dine-timer {
   text-align: center;
   margin: 40px 0 10px;
   font-size: 28px;
   color: rgb(53, 128, 240);
 }
-html, body {
-  height: 100%;
-  margin: 0;
-}
-footer {
-    bottom: 0;  /*Plasserer banneret nederst*/
-    width: 100%;   /*Gjør at banneret strekker seg over hele bredden*/
-}
-
 .section-title2, .section-title3 {
   text-align: center;
   margin-bottom: 40px;
@@ -683,12 +651,14 @@ footer {
   padding-top: 20px;
   color: rgb(53, 128, 240);
 }
+
+/*--PROFIL--*/
 .profile-wrapper {
   position: relative;
   display: inline-block;
+  padding-bottom: 10px;
 }
 
-/* Sirkelen */
 .profile-circle {
   width: 40px;
   height: 40px;
@@ -701,15 +671,12 @@ footer {
   font-weight: bold;
   cursor: pointer;
 }
-
-/* Dropdown - Sentrert under sirkel */
 .profile-dropdown {
   display: none;
   position: absolute;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-
   background: white;
   min-width: 180px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.15);
@@ -717,8 +684,6 @@ footer {
   overflow: hidden;
   z-index: 1000;
 }
-
-/* Vis ved hover */
 .profile-wrapper:hover .profile-dropdown {
   display: block;
 }
@@ -737,15 +702,10 @@ footer {
 .logout-link:hover {
   background: #1f5fd1;
 }
-.profile-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px; /* 👈 viktig: gjør hover-området større */
-}
 .profile-dropdown {
   display: none;
   position: absolute;
-  top: 45px; /* litt nærmere sirkelen */
+  top: 45px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -757,96 +717,13 @@ footer {
   text-decoration: none;
   font-weight: bold;
   width: 100%;
-}  
-footer {
-    text-align: center;
-    padding: 20px;
-    background: rgb(53, 128, 240);
-    color: white;
-    bottom: 0;       /* plasserer den nederst */
-    width: 100%;     /* strekker seg over hele bredden */
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10%;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* venstre side */
-.nav-left h1 {
-  color: rgb(53, 128, 240);
-  font-size: 22px;
-}
-
-/* høyre side */
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-right a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-}
+} 
 .profile-dropdown {
-  text-align: center;   /* 👈 dette er hovedfixen */
+  text-align: center;   
 }
-/* Hele siden sentreres */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-}
-
-/* Tittel */
-.section-title2 {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 28px;
-}
-
-/* Container som sentrerer boksen */
-.profil-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 40px;
-}
-
-/* Selve boksen */
-.profil-info {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 12px;
-  width: 350px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+.profile-dropdown{
   text-align: center;
 }
-
-/* NAVN skal være størst og øverst */
-.profil-info .navn {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #222;
-}
-
-/* Informasjon under */
-.profil-info p {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #444;
-}
-
-/* labels (Navn:, E-post osv) litt mørkere */
-.profil-info strong {
-  color: #111;
+.timene{
+ text-align: center;
 }

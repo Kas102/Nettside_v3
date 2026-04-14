@@ -1,26 +1,25 @@
+//Lager en array med ukedager og en variabel for valgt uke dato
 const ukedager = ["Søndag","Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag"];
 let valgtUkeDato = new Date();
 
-// --- Finn mandag ---
+// Finner mandagen i uken uansett hvilken dato
 function getMonday(date) {
-  const d = new Date(date);
+  const d = new Date(date); 
   const day = d.getDay();
   const diff = d.getDate() - day + (day === 0 ? -6 : 1);
   return new Date(d.setDate(diff));
 }
 
-// --- Formater dato YYYY-MM-DD ---
+//Formaterer dato til YYYY-MM-DD
 function formatISODate(date) {
   return date.toISOString().split("T")[0];
 }
 
-// --- Hent bookinger fra backend ---
+// Henter bestillinger fra backend og markerer de som booket i ukeplanen
 async function hentBestillinger(startDate, sluttDate) {
   try {
     const res = await fetch(`/api/timebestillinger?start=${startDate}&end=${sluttDate}`);
     const data = await res.json();
-
-    console.log("DATA FRA BACKEND:", data); // DEBUG
 
     data.forEach(b => {
       //  Sørger for riktig format
@@ -31,15 +30,12 @@ async function hentBestillinger(startDate, sluttDate) {
         `.slot[data-date="${riktigDato}"][data-time="${riktigTid}"]`
       );
 
-      console.log("Matcher:", riktigDato, riktigTid, cell); // DEBUG
-
       if (cell && !cell.classList.contains("past")) {
       cell.classList.remove("ledig");
       cell.classList.add("booked");
       cell.innerText = "Opptatt";
     }
     });
-
   } catch(err) {
     console.error("Feil ved henting av bookinger:", err);
   }
@@ -81,7 +77,7 @@ async function oppdaterUkeplan() {
       td.dataset.time = tid;
       td.dataset.date = formatISODate(dato);
 
-      // 🔥 Fortid vs fremtid
+      
       const now = new Date();
       const slotDateTime = new Date(`${formatISODate(dato)}T${tid}`);
 
