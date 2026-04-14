@@ -20,10 +20,11 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24
   }
 }));
-
 //Gjør session tilgjengelig i alle ejs-filer
 app.use((req, res, next) => {
   res.locals.user = req.session;
+  res.locals.error = req.session.error || null;
+  req.session.error = null;
   next();
 });
 
@@ -71,7 +72,11 @@ function dbRun(sql, params = []) {
     });
   });
 }
-
+//En hjelpefunksjon som lagrer feilmelling i sessions og sender brukeren til en annen side
+function sendError(req, res, redirectTo, message) {
+  req.session.error = message;
+  res.redirect(redirectTo);
+}
 // Middleware som sjekker om brukeren er logget inn ved å se etter userId i session.
 // Hvis brukeren er logget inn så går vi videre til neste funksjon,hvis den ikke er det sendes brukeren til login-siden.
 function isLoggedIn(req, res, next) {
@@ -98,30 +103,30 @@ app.post('/register', async (req, res) => { // Tar imot en POST-forespørsel til
     INSERT INTO Bruker (navn, passord_hash, laget_dato, rolle, telefonnummer, email) 
     VALUES (?, ?, datetime('now'), 'user', ?, ?)
   `, [navn, hash, telefonnummer, email], (err) => {
-    if (err) return res.send("Feil ved registrering");
-    res.redirect('/login');
+    if (err) return sendError(req, res, '/register', "Feil ved registrering");
+    res.redirect('/login'); 
   });
 });
 
 
 //Lar brukerne logge inn på brukeren sin.
-app.post('/login', (req, res) => { // Tar imot en POST-forespørsel til /login
-  const { navn, password } = req.body; // Henter ut navn og password fra forespørselen
+app.post('/login', (req, res) => {                      // Tar imot en POST-forespørsel til /login
+  const { navn, password } = req.body;                   // Henter ut navn og password fra forespørselen
 //Skjekker om databasen har en bruker mde det navnet, ellers kommer det en feilmelding.
   db.get(`SELECT * FROM Bruker WHERE navn = ?`, [navn], async (err, user) => { 
-    if (!user) return res.send("Bruker finnes ikke");
+    if (!user) return sendError(req, res, '/login', "Bruker finnes ikke");
     // Sammenligner passordet som brukeren skrev inn med passord-hashen i databasen ved hjelp av bcrypt.
     const match = await bcrypt.compare(password, user.passord_hash);
     //Hvis passordet matcher med det i databasen lagres informasjonen i sessionen, og brukeren sendes til index-siden. 
     if (match) {
-      req.session.userId = user.bruker_id; //Lagrer bruker_id i sessionen for å holde styr på hvem som er logget inn
-      req.session.navn = user.navn; //Lagrer navn i sessionen
-      req.session.telefonnummer = user.telefonnummer; //Lagrer telefonnummer i sessionen 
-      req.session.email = user.email; //Lagrer email i sessionen
-      req.session.rolle = user.rolle; //Lagrer rolle i sessionen 
-      req.session.save(() => res.redirect('/')); //Lagrer sessionen og sender brukeren til index-siden
+      req.session.userId = user.bruker_id;              //Lagrer bruker_id i sessionen for å holde styr på hvem som er logget inn
+      req.session.navn = user.navn;                     //Lagrer navn i sessionen
+      req.session.telefonnummer = user.telefonnummer;   //Lagrer telefonnummer i sessionen 
+      req.session.email = user.email;                   //Lagrer email i sessionen
+      req.session.rolle = user.rolle;                   //Lagrer rolle i sessionen 
+      req.session.save(() => res.redirect('/'));        //Lagrer sessionen og sender brukeren til index-siden
     } else {
-      res.send("Feil passord"); //Hvis passordet ikke matcher kommer det en feilmelding
+      return sendError(req, res, '/login', "Feil passord");                        //Hvis passordet ikke matcher kommer det en feilmelding
     }
   });
 });
@@ -247,7 +252,7 @@ app.get('/timer', isLoggedIn, (req, res) => {
       console.error(err);
       return res.send("Feil ved henting av timer");
     }
-
+    
     res.render('timer', {
       timer: rows
     });
@@ -259,6 +264,22 @@ app.post('/bestill-time', isLoggedIn, async (req, res) => {
     const { bestillingsdato, bestillingstid, kommentar } = req.body;
     const bruker_id = req.session.userId; //henter ut bruker_id fra sessionen
 
+    // Sjekker hvor mange bookede timer brukeren allerede har
+    const antallTimer = await new Promise((resolve, reject) => {
+    db.get(
+    `SELECT COUNT(*) AS antall FROM Time WHERE bruker_id = ? AND status = 'booket'`,
+    [bruker_id],
+    (err, row) => {
+      if (err) return reject(err);
+      resolve(row.antall);
+    }
+  );
+});
+
+// Hvis brukeren allerede har 5 timer stopp booking
+if (antallTimer >= 5) {
+  return sendError(req, res, '/bestilling', "Du kan ikke ha mer enn 5 aktive timer");
+}
     //ombookning
     if (req.session.ombook_time_id) {
       const gammelTimeId = req.session.ombook_time_id;
@@ -288,7 +309,7 @@ app.post('/bestill-time', isLoggedIn, async (req, res) => {
     });
     // Hvis det ikke finnes en ledig time på det tidspunktet kommer det en feilmelding
     if (!time) {
-      return res.send("Timen er ikke ledig");
+      return sendError(req, res, '/bestilling', "Timen er ikke ledig");
     }
 
     // Oppdaterer timen i databasen til å være booket, og knytter den til den innloggede brukeren
@@ -369,7 +390,7 @@ app.post('/avlys-time', isLoggedIn, (req, res) => {
     WHERE dato = ? AND start_tid = ?
   `, [dato, tid], (err) => {
     //Hvis det oppstår en feil ved avlysning kommer det en feilmelding.
-    if (err) return res.send("Feil ved avlysning");
+    if (err) return sendError(req, res, '/timer', "Kunne ikke avlyse timen");
     res.redirect('/timer'); //Sender brukeren til /timer for å se sine timer etter avlysning
   });
 });
@@ -410,7 +431,7 @@ app.post('/ombook-time', isLoggedIn, (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // SIDER
-app.get('/login', (req, res) => res.render('login')); //Henter en http GET forespørsel til /login og sender brukeren til login.ejs
+app.get('/login', (req, res) => {res.render('login')});//Henter en http GET forespørsel til /login og sender brukeren til login.ejs
 app.get('/register', (req, res) => res.render('register')); //Henter en http GET forespørsel til /register og sender brukeren til register.ejs
 app.get('/index', (req, res) => res.render('index'));   //Henter en http GET forespørsel til /index og sender brukeren til index.ejs
 app.get('/bestilling', (req, res) => {  //Henter en http GET forespørsel til /bestilling og sender brukeren til bestilling.ejs

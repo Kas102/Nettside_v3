@@ -74,656 +74,660 @@ html, body {
     cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }
 .hero-overlay {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 50px;
-  background-color: rgba(53, 128, 240, 0.9);
-  padding: 25px 35px;
-  border-radius: 15px;
-  color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); 
-  z-index: 10;
-  font-weight: 500;
-  backdrop-filter: blur(5px); 
+  position: absolute; /*Setter posisjonen til absolutt for å kunne plassere den over hero-seksjonen */
+  bottom: 20px; /*Plasserer den 20px fra bunnen av hero-seksjonen */
+  left: 50%;  /*Plasserer den i midten av hero-seksjonen */
+  transform: translateX(-50%);  /*Flytter den tilbake til venstre med 50% av sin egen bredde for å sentrere den */
+  display: flex;  /*Bruker flexbox*/
+  gap: 50px; /*legger til et mellomrom */
+  background-color: rgba(53, 128, 240, 0.9); /*Setter bakgrunnsfarge med gjennomsiktighet */
+  padding: 25px 35px; /*Legger til padding */
+  border-radius: 15px;  /*Setter border-radius for å få avrundede hjørner */
+  color: white; /*Setter tekstfarge */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);  /*Legger til en skygge for å gi dybde */
+  z-index: 10;  /*Setter z-index for å sikre at den ligger over andre elementer */
+  font-weight: 500; /*Setter fontvekt */
+  backdrop-filter: blur(5px);   /*Legger til en blur-effekt på bakgrunnen for å forbedre lesbarheten */
 }
 .hero-overlay .overlay-item {
-  text-align: center;
-  min-width: 120px;
+  text-align: center; /*Sentrerer teksten i overlay-item */
+  min-width: 120px; /*Setter en minimumsbredde for å sikre at innholdet ikke blir for trangt */
 }
 .hero-overlay .overlay-item h4 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  margin-bottom: 10px;  /*legger til margin under */
+  font-size: 18px; /*Setter fontstørrelse */
+  font-weight: 700; /*Setter fontvekt */
+  text-transform: uppercase;  /*Gjør teksten store bokstaver */
+  letter-spacing: 0.5px;  /*Legger til litt mellomrom mellom bokstavene for en mer moderne look */
 }
 .hero-overlay .overlay-item p {
-  margin: 3px 0;
-  font-size: 14px;
+  margin: 3px 0;  /*Legger til margin over og under */
+  font-size: 14px;  /*Setter fontstørrelse */
 }
 .hero-overlay .overlay-icon {
-  font-size: 20px;
-  margin-right: 8px;
+  font-size: 20px;  /*Setter fontstørrelse for ikonet */
+  margin-right: 8px;  /*Legger til margin til høyre for å skille det fra teksten */
 }
 
 
 /*--NAVBAR--*/
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 10%;
-    background: rgb(255, 255, 255);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    display: flex;  /*sier at det skal bruke flexbox */
+    justify-content: space-between; /*Plasserer innholdet med mellomrom mellom */
+    padding: 20px 10%;  /*Legger til padding */
+    background: rgb(255, 255, 255); /*Setter bakgrunnsfarge */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);  /*Legger til en skygge for å gi dybde */
+    position: sticky; /*Gjør at navbaren blir "sticky" og forblir synlig */
+    top: 0; /*Plasserer nav i toppen av siden */
+    z-index: 1000;  /*Setter z-index for å sikre at nav ligger over andre elementer */
 }
 nav h1 {
-    color: rgb(53, 128, 240);
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
 }
 nav a {
-    text-decoration: none;
-    color: #000000;
-    margin-left: 20px;
-    font-weight: 500;
+    text-decoration: none;  /*Fjerner understrek fra lenkene */
+    color: #000000; /*Setter tekstfarge */
+    margin-left: 20px;  /*Legger til margin til venstre for å skille lenkene */
+    font-weight: 500; /*Setter fontvekt */
 }
 .navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto; 
+  display: flex;  /*bruker flexbox */
+  justify-content: space-between;   /*Plasserer innholdet med mellomrom mellom */
+  align-items: center;  /*Sentrerer innholdet vertikalt */
+  width: 100%;  /*Setter bredden til 100% */
+  max-width: 500px; /*Setter maksimal bredde for navigasjonen */
+  margin: 20px auto;  /*Legger til margin */
 }
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10%;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  display: flex;   /*bruker flexbox */
+  justify-content: space-between; /*Plasserer innholdet med mellomrom mellom */
+  align-items: center;  /*Sentrerer innholdet vertikalt */
+  padding: 20px 10%;  /*Legger til padding */
+  background: white;  /*Setter bakgrunnsfarge */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);  /*Legger til en skygge for å gi dybde */
+  position: sticky; /*Gjør at navbaren blir "sticky" og forblir synlig */
+  top: 0; /*Plasserer nav i toppen av siden */
+  z-index: 1000;  /*Setter z-index for å sikre at nav ligger over andre elementer */
 }
 .nav-left h1 {
-  color: rgb(53, 128, 240);
-  font-size: 22px;
+  color: rgb(53, 128, 240); /*Setter tekstfarge */
+  font-size: 22px;  /*Setter fontstørrelse */
 }
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex;   /*bruker flexbox */
+  align-items: center;  /*Sentrerer innholdet vertikalt */
+  gap: 20px;  /*Legger til et mellomrom mellom lenkene */
 }
 .nav-right a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
+  text-decoration: none; /*Fjerner understrek fra lenkene */
+  color: black; /*Setter tekstfarge */
+  font-weight: 500; /*Setter fontvekt */
 }
 
 /*--SEKSJONER--*/
 section {
-    padding: 60px 10%;
+    padding: 60px 10%;  /*Legger til padding */
 }
 
 .section-title {            
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 28px;
-    color: rgb(255, 255, 255);
+    text-align: center; /*Sentrerer teksten */
+    margin-bottom: 40px;  /*Legger til margin under */
+    font-size: 28px;  /*Setter fontstørrelse */
+    color: rgb(255, 255, 255);  /*Setter tekstfarge */
 }
 .section-title1 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 28px;
-    color: rgb(255, 255, 255);
+    text-align: center; /*Sentrerer teksten */
+    margin-bottom: 40px;  /*Legger til margin under */
+    font-size: 28px;  /*Setter fontstørrelse */
+    color: rgb(255, 255, 255);  /*Setter tekstfarge */
 }
 
 /*--LOKASJON--*/
 .location img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 20px;
+    width: 100%;  /*Setter bredden til 100% for å gjøre bildet responsivt */
+    max-width: 600px; /*Setter maksimal bredde for bildet */
+    border-radius: 20px;  /*Setter border-radius for å få avrundede hjørner */
 }
 .location {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex;  /*bruker flexbox */
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    align-items: center;  /*Sentrerer innholdet horisontalt */
 }
 .location button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    background: rgb(53, 128, 240);
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-}
+    margin-top: 15px; /*Legger til margin over knappen */
+    padding: 10px 20px; /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
+} 
 
 /*--BESTILLING--*/
 .booking form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    margin: auto;
+    display: flex;  /* bruker flexbox */
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    max-width: 500px; /*Setter maksimal bredde for bestillingsskjemaet */
+    margin: auto; /*Sentrerer bestillingsskjemaet */
 }
 
 .booking input, .booking textarea {
-    margin-bottom: 15px;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    margin-bottom: 15px;  /*Legger til margin under */
+    padding: 12px;  /*Legger til padding */
+    border-radius: 10px;  /*Setter border-radius for å få avrundede hjørner */
+    border: 1px solid #ccc; /*Setter en lys grå border */
 }
 
 .booking button {
-    padding: 12px;
-    border: none;
-    background: rgb(53, 128, 240); 
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
+    padding: 12px; /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }
 .navigasjon {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: black;
+    display: flex;  /*bruker flexbox */
+    align-items: center;  /*Sentrerer innholdet vertikalt */
+    justify-content: space-between; /*Plasserer innholdet med mellomrom mellom */
+    color: black; /*Setter tekstfarge */
 } 
 .change-week {
-    padding: 10px 20px;
-    border: none;
-    background: rgb(53, 128, 240);
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-} 
+    padding: 10px 20px; /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
+}   
 .booked {
-  background-color: rgb(241, 50, 50);
-  color: white;
-  font-weight: bold;
+  background-color: rgb(241, 50, 50); /*Setter bakgrunnsfarge for bookede timer */
+  color: white; /*Setter tekstfarge for bookede timer */
+  font-weight: bold;  /*Setter fontvekt for bookede timer */
 }  
 
 /*--FOOTER--*/
 footer {
-    text-align: center;
-    padding: 20px;
-    background: rgb(53, 128, 240);
-    color: white;
-    bottom: 0;  
-    width: 100%;   
+    text-align: center; /*Sentrerer teksten */
+    padding: 20px;  /*Legger til padding */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    bottom: 0;    /* plasserer footeren i bunnen av siden */
+    width: 100%;  /*Setter bredden til 100% */  
 }
 
 
 /* Responsiv */
-@media (max-width: 768px) {
-  .hero-overlay {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    padding: 20px 25px;
+@media (max-width: 768px) { 
+  .hero-overlay { 
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    align-items: center;  /*Sentrerer innholdet horisontalt */
+    text-align: center; /*Sentrerer teksten */
+    gap: 20px;  /*Legger til et mellomrom mellom elementene */
+    padding: 20px 25px; /*Reduserer padding for mindre skjermer */
   }
 }
 @media (max-width: 900px) {
   .admin-day-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);  /*Endrer grid-template-columns til 2 kolonner for mindre skjermer */
   }
 }
 
 @media (max-width: 600px) {
   .admin-day-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /*Endrer grid-template-columns til 1 kolonne for mindre skjermer */
   }
 }
 @media (max-width: 900px) {
   .timer-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /*Endrer grid-template-columns til 2 kolonner for mindre skjermer */
   }
 }
 
 @media (max-width: 600px) {
   .timer-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /*Endrer grid-template-columns til 1 kolonne for enda mindre skjermer */
   }
 }
 
 /*--NAPRAPATI--*/
 .naprapati{
-    background-color: rgb(53, 128, 240);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    display: flex;  /*bruker flexbox */
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    align-items: center;  /*Sentrerer innholdet horisontalt */
 }
 .section-title1 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: rgb(53, 128, 240);
+    text-align: center; /*Sentrerer teksten */
+    margin-bottom: 40px;  /*Legger til margin under */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
 }
 .section-description {
-    text-align: center;
-    margin: auto;
-    color:rgb(255, 255, 255);
-    max-width: 600px;
+    text-align: center; /*Sentrerer teksten */
+    margin: auto; /*Sentrerer teksten */
+    color:rgb(255, 255, 255); /*Setter tekstfarge */
+    max-width: 600px; /*Setter maksimal bredde for beskrivelsen */
 }
 .section-title2 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: rgb(53, 128, 240);
+    text-align: center; /*Sentrerer teksten */
+    margin-bottom: 40px;  /*Legger til margin under */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
 }
 
 /*--LOGG INN OG REGISTRER--*/
 .logg-inn-skjema {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
-    text-align: center;
-}
+    display: flex;  /*bruker flexbox */
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    max-width: 400px; /*Setter maksimal bredde for logg inn-skjemaet */
+    margin: auto; /*Sentrerer logg inn-skjemaet */
+    text-align: center; /*Sentrerer teksten */
+} 
 .login-button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    background: rgb(53, 128, 240); 
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
+    margin-top: 20px;   /*Legger til margin over knappen */
+    padding: 12px;  /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }
 .login-label {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size : 15px;
-    color: rgb(53, 128, 240);
-    text-align: left;
+    margin-bottom: 10px;  /*Legger til margin under */
+    margin-top: 10px; /*Legger til margin over */
+    font-weight: bold;  /*Setter fontvekt */
+    font-size : 15px; /*Setter fontstørrelse */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
+    text-align: left; /*Justere teksten til venstre */
 }
 .login-input {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;  /*Legger til padding */
+    border-radius: 10px;  /*Setter border-radius for å få avrundede hjørner */
+    border: 1px solid #ccc; /*Setter en lys grå border */
 }
 .login-header {
-    padding-top: 20px;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 50px;
-    color: rgb(53, 128, 240);
+    padding-top: 20px;  /*Legger til padding over headeren */
+    font-size: 28px;  /*Setter fontstørrelse */
+    text-align: center; /*Sentrerer teksten */
+    margin-bottom: 50px;  /*Legger til margin under headeren */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
 }
 .newUser-button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    background: rgb(53, 128, 240); 
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
+    margin-top: 20px; /*Legger til margin over knappen */
+    padding: 12px;  /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }  
 .registrer-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: auto;
+    display: flex;  /*bruker flexbox */
+    flex-direction: column; /*Plasserer innholdet i en kolonne */
+    max-width: 400px; /*Setter maksimal bredde for registreringsskjemaet */
+    margin: auto; /*Sentrerer registreringsskjemaet */
 }
 .registrer-input {
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 12px;  /*Legger til padding */
+    border-radius: 10px;  /*Setter border-radius for å få avrundede hjørner */
+    border: 1px solid #ccc; /*Setter en lys grå border */
 }
 .registrer-label {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size : 15px;
-    color: rgb(53, 128, 240);
-    text-align: left;
+    margin-bottom: 10px;  /*Legger til margin under */
+    margin-top: 10px; /*Legger til margin over */
+    font-weight: bold;  /*Setter fontvekt */
+    font-size : 15px; /*Setter fontstørrelse */
+    color: rgb(53, 128, 240); /*Setter tekstfarge */
+    text-align: left; /*Justere teksten til venstre */
 }
 .registrer-button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    background: rgb(53, 128, 240); 
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
+    margin-top: 20px; /*Legger til margin over knappen */
+    padding: 12px;  /*Legger til padding */
+    border: none; /*Fjerner standard border */
+    background: rgb(53, 128, 240);  /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    border-radius: 25px;  /*Setter border-radius for å få avrundede hjørner */
+    cursor: pointer;  /*Endrer musepekeren til en pointer når den er over knappen */
 }
 
 /*-DROPDOWN--*/
 .dropdown {
-    position: relative;
-    display: inline-block;
+    position: relative; /*Setter posisjonen til relativ for å kunne plassere dropdown-innholdet i forhold til dropdown-knappen */
+    display: inline-block;  /*Gjør dropdown til en inline-block for å kunne bruke padding og margin */
 }
 .dropdown-content {
-    display: none;
-    position: absolute;
-
-    top: 100%;        
-    left: 50%;        
-    transform: translateX(-40%);
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    z-index: 1;
-    text-align: center;}
+    display: none;  /*Skjuler dropdown-innholdet som standard */
+    position: absolute; /*Setter posisjonen til absolutt for å kunne plassere den i forhold til dropdown-knappen */
+    top: 100%;      /*Plasserer dropdown-innholdet rett under dropdown-knappen */   
+    left: 50%;    /*Plasserer dropdown-innholdet i midten av dropdown-knappen */      
+    transform: translateX(-40%);  /*Flytter dropdown-innholdet tilbake til venstre med 50% av sin egen bredde for å sentrere den */
+    background-color: white;  /*Setter bakgrunnsfarge */
+    min-width: 160px; /*Setter en minimumsbredde for dropdown-innholdet */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /*Legger til en skygge for å gi dybde */
+    z-index: 1; /*Setter z-index for å sikre at dropdown-innholdet ligger over andre elementer */
+    text-align: center;}  /*Sentrerer teksten i dropdown-innholdet */
 
 .dropdown-content a {
-    color: black;
-    padding: 12px;
-    margin: 0;
-    text-decoration: none;
-    display: block;
+    color: black; /*Setter tekstfarge for lenkene i dropdown-innholdet */
+    padding: 12px;  /*Legger til padding for lenkene i dropdown-innholdet */
+    margin: 0;  /*Fjerner margin for lenkene i dropdown-innholdet */
+    text-decoration: none;  /*Fjerner understrek fra lenkene i dropdown-innholdet */
+    display: block; /*Gjør lenkene i dropdown-innholdet til block for å fylle hele bredden og gjøre dem klikkbare */
 }
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f1;  /*Setter bakgrunnsfarge */
 }
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: block; /*Viser dropdown-innholdet når brukeren hover over dropdown-knappen */
 }
 
 
 .logout-btn {
-    background: rgb(53, 128, 240);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 2px;
-    text-decoration: none;
-    font-weight: bold;
+    background: rgb(53, 128, 240); /*Setter bakgrunnsfarge */
+    color: white; /*Setter tekstfarge */
+    padding: 10px 20px; /*Legger til padding */
+    border-radius: 2px; /*Setter border-radius for å få avrundede hjørner */
+    text-decoration: none;  /*Fjerner understrek fra lenken */
+    font-weight: bold;  /*Setter fontvekt */
 }
 
 /*--UKEPLAN--*/
 .ukeplan-table {
-  width: 100%;
-  max-width: 900px;
-  margin: 40px auto;
-  border-collapse: separate;
-  border-spacing: 10px; 
+  width: 100%;  /*Setter bredden til 100% for å fylle tilgjengelig plass */
+  max-width: 900px; /*Setter maksimal bredde for tabellen */
+  margin: 40px auto;  /*Legger til margin for å sentrere tabellen og gi litt avstand fra andre elementer */
+  border-collapse: separate;  /*Bruker separate border-collapse for å kunne bruke border-spacing */
+  border-spacing: 10px;   /*Legger til mellomrom mellom cellene for å gi et luftigere utseende */
 }
 .ukeplan-table th {
-  background-color: rgb(53, 128, 240);
-  color: white;
-  padding: 15px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
+  background-color: rgb(53, 128, 240);  /*Setter bakgrunnsfarge*/
+  color: white;   /*Setter tekstfarge */
+  padding: 15px;  /*legger til padding */
+  border-radius: 8px; /*Setter border-radius for å få avrundede hjørner */
+  font-weight: 600; /*Setter fontvekt */
+  text-align: center; /*Sentrerer teksten i headeren */
 }
 .ukeplan-table td:first-child {
-  background-color: #f1f1f1;
-  color: #333;
-  font-weight: 500;
-  border-radius: 8px;
-  width: 80px;
+  background-color: #f1f1f1;  /*Setter bakgrunnsfarge */
+  color: #333;  /*Setter tekstfarge */
+  font-weight: 500; /*Setter fontvekt */
+  border-radius: 8px; /*Setter border-radius for å få avrundede hjørner */
+  width: 80px;  /*setter bredde */
 }
 .ukeplan-table td {
-  height: 60px;
-  text-align: center;
-  border-radius: 8px;
-  background-color: #eaeaea;
-  transition: 0.2s ease;
+  height: 60px; /*setter høyde */
+  text-align: center; /*Sentrerer teksten  */
+  border-radius: 8px; /*Setter border-radius for å få avrundede hjørner */
+  background-color: #eaeaea;  /*Setter bakgrunnsfarge */
+  transition: 0.2s ease;  /*Legger til en overgangseffekt for hover-effekten */
 }
 .ukeplan-table td.slot {
-  background-color: #e6e6e6;
-  cursor: pointer;
+  background-color: #e6e6e6;  /*Setter bakgrunnsfarge for ledige timer */
+  cursor: pointer;  /*Endrer musepekeren til en pointer når den er over ledige timer for å indikere at de er klikkbare */
 }
 .ukeplan-table td.booked {
-  background-color: rgb(241, 50, 50);
-  color: white;
-  font-weight: bold;
-  cursor: not-allowed;
+  background-color: rgb(241, 50, 50); /*Setter bakgrunnsfarge for bookede timer */
+  color: white; /*Setter tekstfarge for bookede timer */
+  font-weight: bold;  /*Setter fontvekt for bookede timer */
+  cursor: not-allowed;  /*endrer musepekeren til not-allowed for å indikere at bookede timer ikke er klikkbare */
 }
 .ukeplan-table td.ledig {
-  background-color: #1db954;
-  color: white;
-  font-weight: 600;
+  background-color: #1db954;  /*Setter bakgrunnsfarge for ledige timer */
+  color: white; /*Setter tekstfarge for ledige timer */
+  font-weight: 600; /*Setter fontvekt for ledige timer */
 }
 .ukeplan-table td.valgt {
-  background-color: rgb(53, 128, 240);
-  color: white;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(53,128,240,0.6);
+  background-color: rgb(53, 128, 240);  /*Setter bakgrunnsfarge for den valgte timen */
+  color: white; /*Setter tekstfarge for den valgte timen */
+  font-weight: bold;  /*Setter fontvekt for den valgte timen */
+  box-shadow: 0 0 10px rgba(53,128,240,0.6);  /*Legger til en glød-effekt for å fremheve den valgte timen */
 }
 .ukeplan-table td.past {
-  background-color: rgb(255, 255, 255);
-  color: rgb(155, 155, 155);
-  font-weight: 600;
-  cursor: not-allowed;
+  background-color: rgb(255, 255, 255); /*Setter bakgrunnsfarge for fortidige timer */
+  color: rgb(155, 155, 155); /*Setter tekstfarge for fortidige timer */
+  font-weight: 600; /*Setter fontvekt for fortidige timer */
+  cursor: not-allowed;  /*Endrer musepekeren til not-allowed for å indikere at fortidige timer ikke er klikkbare */
 }
 
 /*--TIME--*/
 .timer-container {
-  max-width: 1000px;
-  margin: 40px auto 0 auto; 
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  justify-content: center; 
+  max-width: 1000px;  /*Setter maksimal bredde for time-kortene */
+  margin: 40px auto 0 auto;   /*legger til margin */
+  display: grid;  /*bruker css grid for å lage et rutenett av time-kortene */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /*Definerer kolonner som automatisk tilpasser seg  */
+  gap: 20px;  /*lager et mellomrom */
+  justify-content: center;  /*senterer elementene */
   justify-items: center;  
 }
 .time-card {
-  background: white;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  text-align: center;
+  background: white; /*setter bakgrunsfargen */
+  border-radius: 15px; /*runder av hjørnene */
+  padding: 20px; /* legger til padding */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* legger til en skygge */
+  text-align: center; /*sentrerer teksten */
 }
 .time-header h3 {
-  color: rgb(53,128,240);
-  font-size: 22px;
-  margin-bottom: 10px;
+  color: rgb(53,128,240); /*Endrer tekstfarge */
+  font-size: 22px; /* setter skriftstørrelsen */
+  margin-bottom: 10px; /*legger til margin på bunnen */
 }
 .time-body {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* legger til margin på bunnen */
 }
 .time-slot {
-  font-size: 18px;
-  color: #000;
-  margin-bottom: 8px;
+  font-size: 18px; /*setter font størrelsen */
+  color: #000; /* setter fargen på teksten */
+  margin-bottom: 8px; /* legger til margin */
 }
 .comment {
-  font-size: 14px;
-  color: #aaa;
+  font-size: 14px;/*setter font størrelse */
+  color: #aaa; /* Setter tekstfarge*/
 }
 .time-actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: flex;/*bruker flexbox */
+  justify-content: center; /* sentrerer innholdet */
+  gap: 20px; /* legger til et mellomrom */
 }
 .btn {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+  padding: 12px 30px; /* legger til padding*/
+  border: none;/* fjerner border*/
+  border-radius: 5px; /* runder av hjørnene*/
+  font-size: 16px; /* setter fontstørrelsen*/
+  cursor: pointer; /* endrer musen*/
 }
 .ombook {
-  background: #ffb347;
-  color: white;
+  background: #ffb347; /* setter bakgrunnsfargen*/
+  color: white; /* setter tekstfargen */
 }
 .avlys {
-  background: #ff5c5c;
-  color: white;
+  background: #ff5c5c; /*setter bakgrunnsfargen */
+  color: white; /*setter tekstfargen */
 }
 .locked {
-  color: gray;
-  font-size: 14px;
+  color: gray; /*setter tekstfargen */
+  font-size: 14px; /*setter fontstørrelsen */
 }
 
 /*--TOOGLE--*/
 .toggle-container {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0;
+  display: flex; /* bruker flexbox*/
+  justify-content: center; /* sentrerer innholdet  */
+  margin: 30px 0; /* setter margin */
 }
 .toggle-btn {
-  background: linear-gradient(135deg, #2c7be5, #1f5fbf);
-  color: white;
-  border: none;
-  width: 500px;
-  padding: 14px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  box-shadow: 0 10px 20px rgba(44, 123, 229, 0.25);
-  transition: all 0.25s ease;
+  background: linear-gradient(135deg, #2c7be5, #1f5fbf); /* setter bakgrunnsfarge med gradient*/
+  color: white; /* setter tekstfarge */
+  border: none; /* fjerner border*/
+  width: 500px; /* setter bredden*/
+  padding: 14px 28px; /* setter padding*/
+  font-size: 16px; /* setter fontstørrelsen*/
+  font-weight: 600; /* setter fontvekt*/
+  border-radius: 12px;/* runder av hjørnene */
+  cursor: pointer; /* endrer musen*/
+  box-shadow: 0 10px 20px rgba(44, 123, 229, 0.25); /* legger til en skygge*/
+  transition: all 0.25s ease; /*animasjon med en  varighet på 0.25 sekunder */
 }
 .toggle-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(44, 123, 229, 0.35);
+  transform: translateY(-2px); /*flytter elementet på y-aksen */
+  box-shadow: 0 14px 30px rgba(44, 123, 229, 0.35);/*legger til en skygge */
 }
 .toggle-btn:active {
-  transform: scale(0.98);
-  box-shadow: 0 8px 15px rgba(44, 123, 229, 0.2);
+  transform: scale(0.98); /* endrer størrelse*/
+  box-shadow: 0 8px 15px rgba(44, 123, 229, 0.2); /* skygge*/
 }
 .toggle-btn:focus {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(44, 123, 229, 0.25);
+  outline: none; /*fjerner outline */
+  box-shadow: 0 0 0 4px rgba(44, 123, 229, 0.25);/* skygge*/
 }
 
 /*--ADMIN--*/
 .admin-container {
-  max-width: 1100px;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 1100px; /* setter maksbredde*/
+  margin: 50px auto; /* setter margin*/
+  padding: 20px; /* setter padding*/
 }
 .admin-day {
-  margin-bottom: 40px;
+  margin-bottom: 40px; /* setter margin under*/
 }  
 .admin-day h2 {
-  color: rgb(53, 128, 240);
-  margin-bottom: 15px;
-  border-left: 5px solid rgb(53, 128, 240);
-  padding-left: 10px;
+  color: rgb(53, 128, 240); /* setter tekstfarge*/
+  margin-bottom: 15px; /* setter margin under*/
+  border-left: 5px solid rgb(53, 128, 240); /* endrer på kanten på venstre side*/
+  padding-left: 10px; /* setter padding*/
 }
 .admin-day-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  display: grid; /* sier at det skal vises som css grid*/
+  grid-template-columns: repeat(4, 1fr); /* setter grid-template-colums*/
+  gap: 15px; /* legger til et mellomrom*/
 }
 .admin-slot {
-  background: white;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-  transition: 0.2s;
+  background: white; /* setter bakgrunnsfarge*/
+  border-radius: 10px; /* runder av hjørnene*/
+  padding: 15px; /* setter padding*/
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* skygge*/
+  transition: 0.2s; /* animasjon */
 }
 .admin-slot:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px); /* endrer på y verdien til objektet*/
 }
 .admin-time {
-  font-weight: bold;
-  color: rgb(53, 128, 240);
-  margin-bottom: 5px;
+  font-weight: bold; /* setter fontvekten */
+  color: rgb(53, 128, 240); /* setter tekstfarge*/
+  margin-bottom: 5px; /* setter margin under*/
 }
 .admin-user {
-  font-size: 14px;
-  margin-bottom: 10px;
+  font-size: 14px; /* setter tekststørrelse*/
+  margin-bottom: 10px; /* setter margin under*/
 }
 .admin-btn {
-  padding: 8px;
-  border: none;
-  background: rgb(241, 50, 50);
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 13px;
+  padding: 8px; /* setter padding*/
+  border: none; /* fjerner kanten*/
+  background: rgb(241, 50, 50); /* setter bakgrunssfarge*/
+  color: white; /* setter tekstfarge*/
+  border-radius: 6px; /* runder av hjørnene*/
+  cursor: pointer; /* endrer musen*/
+  width: 100%; /*  setter bredden*/
+  font-size: 13px; /* setter tekststørrelsen*/
 }
 .admin-btn:hover {
-  background: rgb(200, 30, 30);
+  background: rgb(200, 30, 30); /* setter bakgrunsfargen*/
 }
 .admin-user i {
-  margin-right: 6px;
-  color: rgb(53, 128, 240);
+  margin-right: 6px; /* setter margin*/
+  color: rgb(53, 128, 240); /* setter tekstfarge*/
 }
 
 .dine-timer {
-  text-align: center;
-  margin: 40px 0 10px;
-  font-size: 28px;
-  color: rgb(53, 128, 240);
+  text-align: center; /*  sentrerer teksten*/
+  margin: 40px 0 10px; /* setter margin*/
+  font-size: 28px; /* setter fontstørrelse*/
+  color: rgb(53, 128, 240); /* setter tekstfarge*/
 }
 .section-title2, .section-title3 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 28px;
-  padding-top: 20px;
-  color: rgb(53, 128, 240);
+  text-align: center; /* sentrerer teksten*/
+  margin-bottom: 40px; /* setter margin under*/
+  font-size: 28px; /* setter tekststørrelsen*/
+  padding-top: 20px; /* setter padding*/
+  color: rgb(53, 128, 240); /* setter tekstfarge*/
 }
 
 /*--PROFIL--*/
 .profile-wrapper {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 10px;
+  position: relative; /* setter posijonen til relativ*/
+  display: inline-block; /* sier at det skal vises som en inline-block*/
+  padding-bottom: 10px; /* setter padding */
+  margin-left: auto; /* margin*/
+  margin-right: 20px; /* margin*/
 }
 
 .profile-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #2c7be5;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
+  width: 40px; /* setter bredde*/
+  height: 40px; /* setter høyde*/
+  border-radius: 50%; /* runder av hjørnene*/
+  background: #2c7be5; /* setter bakgrunnsfarge*/
+  color: white; /*  setter tekstfarge*/
+  display: flex; /* bruker flexbox*/
+  align-items: center; /* sentrerer gjenstandene*/
+  justify-content: center; /* sentrerer gjenstandene*/
+  font-weight: bold; /* setter tekst vekt*/
+  cursor: pointer; /* endrer musen*/
 }
 .profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  min-width: 180px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 1000;
+  display: none; 
+  position: absolute; /* setter posisjonen til absolutt*/
+  top: 50px; /* flytter elementet*/
+  left: 50%; /* flytter elementet*/
+  transform: translateX(-50%); /* endrer på x verdien */
+  background: white; /* setter bakgrunsfargen*/
+  min-width: 180px; /* setter minste bredden*/
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* skygge*/
+  border-radius: 8px; /* runder av hjørnene*/
+  overflow: hidden; /*inhold utenfor blir skjult */
+  z-index: 1000; /*gjør slik at det kommer forran andre elementer */
+  text-align: center; /* sentrerer teksten */
 }
 .profile-wrapper:hover .profile-dropdown {
-  display: block;
+  display: block; /* sier at det skal vises som en blokk*/
 }
 .logout-link {
-  display: block;
-  text-align: center;
-  margin: 10px;
-  padding: 8px 12px;
-  background: #2c7be5;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
+  display: block; /* sier at det skal vises som en blokk*/
+  text-align: center; /* sentrerer teksten*/
+  margin: 10px; /* setter margin*/
+  padding: 8px 12px; /* setter padding*/
+  background: #2c7be5; /* setter bakgrunnsfarge*/
+  color: white; /* setter tekstfarge*/
+  border-radius: 6px; /* runder av hjørnene*/
+  text-decoration: none; /* fjerner tekstdekrasjon*/
+  font-weight: 500; /* setter tekstvekt*/
 }
 
 .logout-link:hover {
-  background: #1f5fd1;
+  background: #1f5fd1; /* setter bakgrunnsfarge*/
 }
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 45px;
-  left: 50%;
-  transform: translateX(-50%);
+
+.timene {
+  display: block; /* sier at det skal vises som en blokk*/
+  text-align: center; /* sentrerer teksten*/
+  padding: 12px 0; /* setter padding*/
+  color: black; /* setter tekstfarge*/
+  text-decoration: none; /* fjerner tekstdekorasjon*/
 }
+
 .slett-btn {
-  background: rgb(255, 255, 255);
-  color: rgb(255, 35, 35);
-  padding: 8px 12px;
-  border: none;
-  text-decoration: none;
-  font-weight: bold;
-  width: 100%;
-} 
-.profile-dropdown {
-  text-align: center;   
+  background: rgb(255, 255, 255); /* setter bakgrunnsfarge*/
+  color: rgb(255, 35, 35); /* setter tekstfarge*/
+  padding: 8px 12px; /* setter padding*/
+  border: none; /* fjerner kanten*/
+  text-decoration: none; /* fjerner tekstdekorasjon*/
+  font-weight: bold; /* setter fontvekt*/
+  width: 100%; /* setter bredden*/
+  text-align: center; /*sentrerer teksten */
 }
-.profile-dropdown{
-  text-align: center;
-}
-.timene{
- text-align: center;
+.error-box {
+  background-color: #ffe5e5; /* setter bakgrunnsfarge*/
+  border: 1px solid #ff4d4d; /* setter border*/
+  color: #b30000; /* setter tekstfarge*/
+  padding: 12px 16px; /* setter padding*/
+  margin-bottom: 15px; /* setter margin */
+  font-size: 14px; /* setter tekststørrelse*/
+  text-align: center; /* sentrerer teksten */
 }

@@ -5,9 +5,18 @@
     bottom: 0;
   }
 </style>
+<% if (error) { %>
+  <div class="error-box">
+    <%= error %>
+  </div>
+<% } %>
+
 <section class="login-section">
+
 <h2 class="login-header">Logg inn</h2>
+
 <form class="logg-inn-skjema" action="/login" method="POST">
+
     <label class="login-label" for="navn">Fullt navn:</label>
     <input class="login-input" type="text" id="navn" name="navn" required>
 
@@ -15,6 +24,7 @@
     <input class="login-input" type="password" id="password" name="password" required>
 
     <button class="login-button" type="submit">Logg inn</button>
+    
 
     <p class="newUser">Har du ikke konto? <a href="/register">Registrer deg</a></p>
 </form>

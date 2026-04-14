@@ -5,55 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 <title>Naprapat Klinikk</title> <!--Setter tittelen på nettsiden-->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">   <!--Legger til Google Font Poppins-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<link rel="stylesheet" href="/styles.css"> <!--Lenker til stilarket mitt-->
 </head>
 <body>
-
 <nav>
   <div class="nav-left">
-    <h1>Naprapat klinikk</h1>
+    <h1>Naprapat klinikk</h1> <!--Lager overskriften til nettsiden-->
   </div>
-
-  <div class="nav-right">
-
-    <a href="/index">Hjem</a>
-
-    <div class="dropdown">
-      <a>Om oss</a>
-      <div class="dropdown-content">
-        <a href="/bestilling">Bestill time</a>
-        <a href="#location">Lokasjon</a>
+  <div class="nav-right"> <!--Lager en din med klasse nav-right-->
+    <a href="/index">Hjem</a> <!--Lenker til index-->
+    <div class="dropdown">  <!--Lager en div med klasse dropdown-->
+      <a>Om oss</a> <!--Lager et a element-->
+      <div class="dropdown-content"> <!--Lager en div med klasse dropdown content-->
+        <a href="/bestilling">Bestill time</a>  <!--Linker til /bestill time-->
+        <a href="#location">Lokasjon</a> <!--anchor element som sender deg til lokasjon-->
       </div>
     </div>
-
     <% if (user && user.userId) { %>
-
       <div class="profile-wrapper">
         <div class="profile-circle">
           <%= user.navn ? user.navn.charAt(0).toUpperCase() : "U" %>
         </div>
-
         <div class="profile-dropdown">
-
           <% if (user.rolle === 'admin') { %>
             <a href="/admin-timer" class="timene">Mine timer</a>
           <% } else { %>
             <a href="/timer" class="timene">Mine timer</a>
           <% } %>
-
           <form action="/slett-bruker" method="POST">
             <button type="submit" class="slett-btn">Slett bruker</button>
           </form>
-
           <a href="/logout" class="logout-link">Logg ut</a>
         </div>
       </div>
-
     <% } else { %>
       <a href="/login">Logg inn</a>
     <% } %>
-
   </div>
 </nav>
     

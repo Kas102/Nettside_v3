@@ -5,6 +5,11 @@
     bottom: 0;
   }
 </style>
+<% if (error) { %>
+  <div class="error-box">
+    <%= error %>
+  </div>
+<% } %>
   <h2 class="section-title3">
   <%= ombook ? "Ombook Time" : "Bestill Time" %>
 </h2>
@@ -14,7 +19,6 @@
   </button>
 </div>
 <section class="ukeplan" id="ukeplan" style="display: none;">
-
   <div class="navigation">
     <button class="change-week" id="prevWeek"><i class="fa fa-arrow-left"></i> Forige uke</button>
     <button class="change-week" id="nextWeek">Neste uke <i class="fa fa-arrow-right"></i></button>
